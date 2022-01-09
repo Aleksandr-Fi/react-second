@@ -2,31 +2,31 @@ import React from "react";
 import ReactDOM from 'react-dom';
 
 const el = (
-  <header class="header">
+  <header className="header">
     <h1>todos</h1>
-    <input class="new-todo" placeholder="What needs to be done?" autofocus />
+    <input className="new-todo" placeholder="What needs to be done?" autofocus />
   </header>
 )
 
 const AppHeader = () => {
   return (
-    <header class="header">
+    <header className="header">
       <h1>todos</h1>
-      <input class="new-todo" placeholder="What needs to be done?" autofocus />
+      <input className="new-todo" placeholder="What needs to be done?" autofocus />
     </header>
   )
 }
 
 const Task = (description, created) => {
   return (
-    <div class="view">
-      <input class="toggle" type="checkbox" />
+    <div className="view">
+      <input className="toggle" type="checkbox" />
       <label>
-        <span class="description">Completed task</span>
-        <span class="created">created 17 seconds ago</span>
+        <span className="description">Completed task</span>
+        <span className="created">created 17 seconds ago</span>
       </label>
-      <button class="icon icon-edit"></button>
-      <button class="icon icon-destroy"></button>
+      <button className="icon icon-edit"></button>
+      <button className="icon icon-destroy"></button>
     </div>
   )
 }
