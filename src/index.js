@@ -1,17 +1,48 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+const el = (
+  <header class="header">
+    <h1>todos</h1>
+    <input class="new-todo" placeholder="What needs to be done?" autofocus />
+  </header>
+)
+
+const AppHeader = () => {
+  return (
+    <header class="header">
+      <h1>todos</h1>
+      <input class="new-todo" placeholder="What needs to be done?" autofocus />
+    </header>
+  )
+}
+
+const Task = (description, created) => {
+  return (
+    <div class="view">
+      <input class="toggle" type="checkbox" />
+      <label>
+        <span class="description">Completed task</span>
+        <span class="created">created 17 seconds ago</span>
+      </label>
+      <button class="icon icon-edit"></button>
+      <button class="icon icon-destroy"></button>
+    </div>
+  )
+}
+
+const NewTaskForm = () => {
+
+}
+
+const Footer = () => {
+
+}
+
+const TasksFilter = () => {
+
+}
+
+ReactDOM.render(el,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
