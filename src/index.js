@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 
+import AppHeader from './components/app-header';
+import TaskList from "./components/task-list";
+import Footer from "./components/footer";
+
 const el = (
   <section className="todoapp">
     <header className="header">
@@ -63,21 +67,29 @@ const el = (
   </section>
 )
 
-ReactDOM.render(el,
-  document.getElementById('root')
-);
+// ReactDOM.render(el,
+//   document.getElementById('root')
+// );
 
 const App = () => {
 
   const todoData = [
-    {description: 'Completed task', created: 'created 17 seconds ago'},
-    {description: 'Editing task', created: 'created 5 minutes ago'},
-    {description: 'Active task', created: 'created 5 minutes ago'},
+    {description: 'Completed task', created: ' created 17 seconds ago'},
+    {description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
+    {description: 'Active task', created: ' created 5 minutes ago'},
   ]
 
   return (
     <section className="todoapp">
-
+      <AppHeader />
+      <section className="main">
+        <TaskList todos={todoData} />
+        <Footer />
+      </section>
     </section>
   )
 }
+
+ReactDOM.render(<App />,
+  document.getElementById('root')
+);
