@@ -1,8 +1,8 @@
 
 
-const NewTaskForm = ( {field = false} ) => {
-    if (field.value) {
-        return <input type="text" className="edit" value={field.value} />
+const NewTaskForm = ( {value = false} ) => {
+    if (value) {
+        return <input type="text" className="edit" value={value} />
     }
     return null
 }
