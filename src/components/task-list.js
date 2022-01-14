@@ -5,11 +5,11 @@ const TaskList = ( {todos} ) => {
 
     const elements = todos.map((item) => {
 
-        const {id, ...itemProps} = item
+        const {id, className = false, ...itemProps} = item
         const {field, ...itemTask} = itemProps
 
         return (
-            <li className="view" key={id}>
+            <li className={className} key={id}>
                 <Task {...itemTask} />
                 <NewTaskForm {...field} />
             </li>
@@ -17,7 +17,7 @@ const TaskList = ( {todos} ) => {
     })
 
     return (
-        <ul>
+        <ul className='todo-list'>
             { elements }
         </ul>
     )

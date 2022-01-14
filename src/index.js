@@ -10,8 +10,8 @@ import './style.css'
 const App = () => {
 
   const todoData = [
-    {id: 1, description: 'Completed task', created: ' created 17 seconds ago'},
-    {id: 2, description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
+    {id: 1, className: 'completed', description: 'Completed task', created: ' created 17 seconds ago'},
+    {id: 2, className: 'editing', description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
     {id: 3, description: 'Active task', created: ' created 5 minutes ago'},
   ]
 

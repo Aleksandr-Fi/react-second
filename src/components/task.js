@@ -9,7 +9,7 @@ class Task extends Component {
     const {description, created} = this.props
 
     return (
-      <div>
+      <div className="view">
         <input className="toggle" type="checkbox" />
         <label>
           <span className="description">{description}</span>
