@@ -12,41 +12,41 @@ const el = (
       <input className="new-todo" placeholder="What needs to be done?" autoFocus />
     </header>
     <section className="main">
-    <ul className="todo-list">
-        <li className="completed">
-          <div className="view">
-            <input className="toggle" type="checkbox" />
-            <label>
-              <span className="description">Completed task</span>
-              <span className="created"> created 17 seconds ago</span>
-            </label>
-            <button className="icon icon-edit"></button>
-            <button className="icon icon-destroy"></button>
-          </div>
-        </li>
-        <li className="editing">
-          <div className="view">
-            <input className="toggle" type="checkbox" />
-            <label>
-              <span className="description">Editing task</span>
-              <span className="created"> created 5 minutes ago</span>
-            </label>
-            <button className="icon icon-edit"></button>
-            <button className="icon icon-destroy"></button>
-          </div>
-          <input type="text" className="edit" value="Editing task" />
-        </li>
-        <li>
-          <div className="view">
-            <input className="toggle" type="checkbox" />
-            <label>
-              <span className="description">Active task</span>
-              <span className="created"> created 5 minutes ago</span>
-            </label>
-            <button className="icon icon-edit"></button>
-            <button className="icon icon-destroy"></button>
-          </div>
-        </li>
+      <ul className="todo-list">
+          <li className="completed">
+            <div className="view">
+              <input className="toggle" type="checkbox" />
+              <label>
+                <span className="description">Completed task</span>
+                <span className="created"> created 17 seconds ago</span>
+              </label>
+              <button className="icon icon-edit"></button>
+              <button className="icon icon-destroy"></button>
+            </div>
+          </li>
+          <li className="editing">
+            <div className="view">
+              <input className="toggle" type="checkbox" />
+              <label>
+                <span className="description">Editing task</span>
+                <span className="created"> created 5 minutes ago</span>
+              </label>
+              <button className="icon icon-edit"></button>
+              <button className="icon icon-destroy"></button>
+            </div>
+            <input type="text" className="edit" value="Editing task" />
+          </li>
+          <li>
+            <div className="view">
+              <input className="toggle" type="checkbox" />
+              <label>
+                <span className="description">Active task</span>
+                <span className="created"> created 5 minutes ago</span>
+              </label>
+              <button className="icon icon-edit"></button>
+              <button className="icon icon-destroy"></button>
+            </div>
+          </li>
       </ul>
       <footer className="footer">
         <span className="todo-count">1 items left</span>
@@ -67,9 +67,9 @@ const el = (
   </section>
 )
 
-// ReactDOM.render(el,
-//   document.getElementById('root')
-// );
+ReactDOM.render(el,
+  document.getElementById('root')
+);
 
 const App = () => {
 
@@ -90,6 +90,6 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />,
-  document.getElementById('root')
-);
+// ReactDOM.render(<App />,
+//   document.getElementById('root')
+// );

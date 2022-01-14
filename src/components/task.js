@@ -1,6 +1,6 @@
 
 
-const Task = ( {description, created, field = false} ) => {
+const Task = ( {description, created, field} ) => {
 
     const Field = (field) => {
         if (field.value) {
@@ -11,13 +11,15 @@ const Task = ( {description, created, field = false} ) => {
     }
     return (
       <li className="view">
-        <input className="toggle" type="checkbox" />
-        <label>
-          <span className="description">{description}</span>
-          <span className="created">{created}</span>
-        </label>
-        <button className="icon icon-edit"></button>
-        <button className="icon icon-destroy"></button>
+        <div>
+          <input className="toggle" type="checkbox" />
+          <label>
+            <span className="description">{description}</span>
+            <span className="created">{created}</span>
+          </label>
+          <button className="icon icon-edit"></button>
+          <button className="icon icon-destroy"></button>
+        </div>
         <Field {...field} />
       </li>
     )
