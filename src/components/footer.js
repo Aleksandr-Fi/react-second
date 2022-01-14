@@ -3,9 +3,12 @@ import TaskFilter from "./task-filter"
 const Footer = ( {filters} ) => {
 
     const elements = filters.map((item) => {
+
+        const {id, ...itemProps} = item
+
         return (
-            <li key={item.id}>
-                <TaskFilter {...item} />
+            <li key={id}>
+                <TaskFilter {...itemProps} />
             </li>
         )
     })
