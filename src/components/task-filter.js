@@ -1,11 +1,7 @@
 
 
-const TaskFilter = ( {text, className = false}) => {
-    return (
-        <li>
-            <button className={className}>{text}</button>
-        </li>
-    )
+const TaskFilter = ( {text, className}) => {
+    return <button className={className}>{text}</button>
 }
 
 export default TaskFilter

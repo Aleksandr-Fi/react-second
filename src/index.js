@@ -74,15 +74,15 @@ const el = (
 const App = () => {
 
   const todoData = [
-    {description: 'Completed task', created: ' created 17 seconds ago'},
-    {description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
-    {description: 'Active task', created: ' created 5 minutes ago'},
+    {id: 1, description: 'Completed task', created: ' created 17 seconds ago'},
+    {id: 2, description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
+    {id: 3, description: 'Active task', created: ' created 5 minutes ago'},
   ]
 
   const footerData = [
-    {text: 'All', className: 'selected'},
-    {text: 'Active'},
-    {text: 'Completed'},
+    {id: 1, text: 'All', className: 'selected'},
+    {id: 2, text: 'Active'},
+    {id: 3, text: 'Completed'},
   ]
 
   return (
