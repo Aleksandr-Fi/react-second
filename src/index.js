@@ -79,12 +79,18 @@ const App = () => {
     {description: 'Active task', created: ' created 5 minutes ago'},
   ]
 
+  const footerData = [
+    {text: 'All', className: 'selected'},
+    {text: 'Active'},
+    {text: 'Completed'},
+  ]
+
   return (
     <section className="todoapp">
       <AppHeader />
       <section className="main">
         <TaskList todos={todoData} />
-        <Footer />
+        <Footer filters={footerData} />
       </section>
     </section>
   )
