@@ -5,7 +5,7 @@ const TaskList = ( {todos} ) => {
 
     const elements = todos.map((item) => {
 
-        const {id, className = false, ...itemProps} = item
+        const {id, className, ...itemProps} = item
         const {field, ...itemTask} = itemProps
 
         return (
