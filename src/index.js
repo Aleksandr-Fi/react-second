@@ -67,9 +67,9 @@ const el = (
   </section>
 )
 
-ReactDOM.render(el,
-  document.getElementById('root')
-);
+// ReactDOM.render(el,
+//   document.getElementById('root')
+// );
 
 const App = () => {
 
@@ -90,6 +90,6 @@ const App = () => {
   )
 }
 
-// ReactDOM.render(<App />,
-//   document.getElementById('root')
-// );
+ReactDOM.render(<App />,
+  document.getElementById('root')
+);
