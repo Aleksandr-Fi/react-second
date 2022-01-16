@@ -1,20 +1,16 @@
 import Task from './task'
-import NewTaskForm from './new-task-form'
 
 const TaskList = ( {todos, onDestroy} ) => {
 
     const elements = todos.map((item) => {
 
-        const {id, className, ...itemProps} = item
-        const {field, ...itemTask} = itemProps
+        const {id, ...itemProps} = item
 
         return (
-            <li className={className} key={id}>
-                <Task {...itemTask}
-                    onComplated={() => console.log(`complated`) }
-                    onDestroy={() => onDestroy(id)} />
-                <NewTaskForm {...field} />
-            </li>
+            <Task  key={id}
+                {...itemProps}
+                onComplated={() => console.log(`complated`) }
+                onDestroy={() => onDestroy(id)} />
         )
     })
 
