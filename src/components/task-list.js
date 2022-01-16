@@ -10,7 +10,8 @@ const TaskList = ( {todos} ) => {
 
         return (
             <li className={className} key={id}>
-                <Task {...itemTask} />
+                <Task {...itemTask}
+                    onComplated={() => console.log(`complated`) } />
                 <NewTaskForm {...field} />
             </li>
         )
