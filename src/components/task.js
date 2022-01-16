@@ -4,7 +4,7 @@ import { Component } from "react"
 class Task extends Component {
 
   render() {
-    const {description, created, onComplated} = this.props
+    const {description, created, onComplated, onDestroy} = this.props
 
     return (
       <div className="view">
@@ -15,7 +15,8 @@ class Task extends Component {
           <span className="created">{created}</span>
         </label>
         <button className="icon icon-edit"></button>
-        <button className="icon icon-destroy"></button>
+        <button className="icon icon-destroy"
+                onClick={onDestroy}></button>
       </div>
   )
   }

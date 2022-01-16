@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 
 import AppHeader from './components/app-header';
@@ -69,29 +69,37 @@ const el = (
 </section>
 )
 
-const App = () => {
+class App extends Component {
 
-  const todoData = [
-    {id: 1, className: 'completed', description: 'Completed task', created: ' created 17 seconds ago'},
-    {id: 2, className: 'editing', description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
-    {id: 3, description: 'Active task', created: ' created 5 minutes ago'},
-  ]
+  state = {
+    todoData: [
+      {id: 1, className: 'completed', description: 'Completed task', created: ' created 17 seconds ago'},
+      {id: 2, className: 'editing', description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
+      {id: 3, description: 'Active task', created: ' created 5 minutes ago'},
+    ],
 
-  const footerData = [
-    {id: 1, text: 'All', className: 'selected'},
-    {id: 2, text: 'Active'},
-    {id: 3, text: 'Completed'},
-  ]
+    footerData: [
+      {id: 1, text: 'All', className: 'selected'},
+      {id: 2, text: 'Active'},
+      {id: 3, text: 'Completed'},
+    ]
+  }
 
-  return (
-    <section className="todoapp">
-      <AppHeader />
-      <section className="main">
-        <TaskList todos={todoData} />
-        <Footer filters={footerData} />
+  render() {
+    return (
+      <section className="todoapp">
+        <AppHeader />
+        <section className="main">
+          <TaskList 
+            todos={this.state.todoData}
+            onDestroy= { (id) => console.log(`del ${id}`)} />
+          <Footer filters={this.state.footerData} />
+        </section>
       </section>
-    </section>
-  )
+    )
+  }
+
+  
 }
 
 ReactDOM.render(<App />,
