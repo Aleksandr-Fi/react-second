@@ -16,7 +16,7 @@ export default class App extends Component {
         ],
 
         footerData: [
-            {id: 1, text: 'All', selected: true, className: 'selected'},
+            {id: 1, text: 'All', selected: true},
             {id: 2, text: 'Active', selected: false},
             {id: 3, text: 'Completed', selected: false},
         ]
