@@ -30,6 +30,7 @@ export default class App extends Component {
             completed: false,
             editing: false,
             created: ' created 17 minutes ago',
+            field: {value: text},
             id: this.maxId++
         }
     }
