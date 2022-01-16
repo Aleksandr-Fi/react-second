@@ -12,6 +12,9 @@ export default class App extends Component {
             {id: 1, completed: true, editing: false, text: 'Completed task', created: ' created 17 seconds ago'},
             {id: 2, completed: false, editing: true, text: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
             {id: 3, text: 'Active task', created: ' created 5 minutes ago'},
+            this.createTodoTask('Active task'),
+            this.createTodoTask('Active task'),
+            this.createTodoTask('Active task')
         ],
 
         footerData: [
@@ -19,6 +22,16 @@ export default class App extends Component {
             {id: 2, text: 'Active'},
             {id: 3, text: 'Completed'},
         ]
+    }
+
+    createTodoTask(text) {
+        return {
+            text: text,
+            completed: false,
+            editing: false,
+            created: ' created 17 minutes ago',
+            id: this.maxId++
+        }
     }
 
     destroyTask = (id) => {
@@ -39,7 +52,7 @@ export default class App extends Component {
     addTask = (text) => {
         const newTask = {
             text: text,
-            completed: true,
+            completed: false,
             editing: false,
             created: ' created 17 minutes ago',
             id: this.maxId++
