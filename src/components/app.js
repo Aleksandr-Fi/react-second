@@ -7,8 +7,8 @@ export default class App extends Component {
 
     state = {
         todoData: [
-            {id: 1, className: 'completed', description: 'Completed task', created: ' created 17 seconds ago'},
-            {id: 2, className: 'editing', description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
+            {id: 1, completed: true, editing: false, description: 'Completed task', created: ' created 17 seconds ago'},
+            {id: 2, completed: false, editing: true, description: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
             {id: 3, description: 'Active task', created: ' created 5 minutes ago'},
         ],
 

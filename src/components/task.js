@@ -4,25 +4,30 @@ import NewTaskForm from './new-task-form'
 class Task extends Component {
 
   state = {
-    completed: false
+    completes: false
   }
 
   onComplated = () => {
     this.setState((state) => {
       return {
-        completed: !state.completed
+        completes: !state.completes
       }
-      
     })
   }
 
   render() {
-    const {className, description, created, field, onDestroy} = this.props
-    const {completed} = this.state
+    const {completed, editing, description, created, field, onDestroy} = this.props
+    const {completes} = this.state
 
-    let classNames = className
+    let classNames = ''
+    if (completes) {
+      classNames += ' completed'
+    }
     if (completed) {
       classNames += ' completed'
+    }
+    if (editing) {
+      classNames += ' editing'
     }
 
     return (
