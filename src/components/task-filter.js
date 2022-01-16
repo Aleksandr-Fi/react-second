@@ -1,12 +1,13 @@
 
 
-const TaskFilter = ( {text, selected}) => {
+const TaskFilter = ( {text, selected, onToggleFilter}) => {
     let classNames = ''
     if (selected) {
         classNames += ' selected'
     }
 
-    return <button className={classNames}>{text}</button>
+    return <button className={classNames}
+                    onClick={onToggleFilter}>{text}</button>
 }
 
 export default TaskFilter

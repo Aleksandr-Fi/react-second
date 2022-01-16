@@ -1,6 +1,6 @@
 import TaskFilter from "./task-filter"
 
-const Footer = ( {filters, todos} ) => {
+const Footer = ( {filters, todos, onToggleFilter} ) => {
 
     const leftItems = todos.filter((el) => el.completed === false).length
     const leftText = `${leftItems} items left`
@@ -11,7 +11,8 @@ const Footer = ( {filters, todos} ) => {
 
         return (
             <li key={id}>
-                <TaskFilter {...itemProps} />
+                <TaskFilter {...itemProps}
+                    onToggleFilter={() => onToggleFilter(id)} />
             </li>
         )
     })

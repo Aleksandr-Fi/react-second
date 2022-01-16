@@ -16,8 +16,8 @@ export default class App extends Component {
         ],
 
         footerData: [
-            {id: 1, text: 'All', selected: true},
-            {id: 2, text: 'Active', selected: false},
+            {id: 1, text: 'All', selected: false},
+            {id: 2, text: 'Active', selected: true},
             {id: 3, text: 'Completed', selected: false},
         ]
     }
@@ -73,6 +73,23 @@ export default class App extends Component {
         })
     }
 
+    onToggleFilter = (id) => {
+        console.log('filter ' + id);
+        this.setState(({ footerData }) => {
+            const newArray = footerData.map((el) => {
+                if (el.id ===id) {
+                    return {...el, selected: true}
+                } else {
+                    return {...el, selected: false}
+                }
+            })
+
+            return {
+                footerData: newArray
+            }
+        })
+    }
+
     destroyTask = (id) => {
         this.setState(({ todoData }) => {
             const idx = todoData.findIndex((el) => el.id === id)
@@ -121,7 +138,10 @@ export default class App extends Component {
                     onDestroy= {this.destroyTask}
                     onEditing={this.onToggleEditing}
                     onCompleted={this.onToggleCompleted} />
-                <Footer filters={footerData} todos={todoData} />
+                <Footer
+                    filters={footerData}
+                    todos={todoData}
+                    onToggleFilter={this.onToggleFilter} />
             </section>
             </section>
         )
