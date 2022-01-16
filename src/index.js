@@ -85,6 +85,21 @@ class App extends Component {
     ]
   }
 
+  destroyTask = (id) => {
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id)
+
+      const newArray = [
+        ... todoData.slice(0, idx), 
+        ... todoData.slice(idx + 1)
+      ]
+      
+      return {
+        todoData: newArray
+      }
+    })
+  }
+
   render() {
     return (
       <section className="todoapp">
@@ -92,7 +107,7 @@ class App extends Component {
         <section className="main">
           <TaskList 
             todos={this.state.todoData}
-            onDestroy= { (id) => console.log(`del ${id}`)} />
+            onDestroy= { this.destroyTask } />
           <Footer filters={this.state.footerData} />
         </section>
       </section>
