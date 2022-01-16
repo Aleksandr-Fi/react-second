@@ -3,26 +3,12 @@ import NewTaskForm from './new-task-form'
 
 class Task extends Component {
 
-  state = {
-    completes: false
-  }
-
-  onComplated = () => {
-    this.setState((state) => {
-      return {
-        completes: !state.completes
-      }
-    })
-  }
-
   render() {
-    const {completed, editing, text, created, field, onDestroy} = this.props
-    const {completes} = this.state
+    const {completed, editing, text, created,
+        field, onDestroy, onEditing, onCompleted} = this.props
 
     let classNames = ''
-    if (completes) {
-      classNames += ' completed'
-    }
+    
     if (completed) {
       classNames += ' completed'
     }
@@ -34,12 +20,13 @@ class Task extends Component {
       <li className={classNames}>
         <div className="view">
           <input  className="toggle" type="checkbox"
-                  onClick={this.onComplated} />
+                  onClick={onCompleted} />
           <label>
             <span className="description">{text}</span>
             <span className="created">{created}</span>
           </label>
-          <button className="icon icon-edit"></button>
+          <button className="icon icon-edit"
+                  onClick={onEditing}></button>
           <button className="icon icon-destroy"
                   onClick={onDestroy}></button>
         </div>

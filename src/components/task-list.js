@@ -1,6 +1,6 @@
 import Task from './task'
 
-const TaskList = ( {todos, onDestroy} ) => {
+const TaskList = ( {todos, onDestroy, onEditing, onCompleted} ) => {
 
     const elements = todos.map((item) => {
 
@@ -9,7 +9,9 @@ const TaskList = ( {todos, onDestroy} ) => {
         return (
             <Task  key={id}
                 {...itemProps}
-                onDestroy={() => onDestroy(id)} />
+                onDestroy={() => onDestroy(id)}
+                onEditing={() => onEditing(id)}
+                onCompleted={() => onCompleted(id)} />
         )
     })
 
