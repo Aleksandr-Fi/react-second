@@ -5,6 +5,8 @@ import Footer from "./footer";
 
 export default class App extends Component {
 
+    maxId = 100
+
     state = {
         todoData: [
             {id: 1, completed: true, editing: false, description: 'Completed task', created: ' created 17 seconds ago'},
@@ -32,6 +34,27 @@ export default class App extends Component {
         todoData: newArray
         }
     })
+    }
+
+    addTask = (text) => {
+        const newTask = {
+            text: text,
+            completed: true,
+            editing: false,
+            created: ' created 5 minutes ago',
+            id: this.maxId++
+        }
+
+        this.setState(({ todoData }) => {
+            const newArr = [
+                ...todoData,
+                newTask
+            ]
+
+            return {
+                todoData: newArr
+            }
+        })
     }
 
     render() {
