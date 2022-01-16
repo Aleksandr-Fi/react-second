@@ -9,7 +9,6 @@ const TaskList = ( {todos, onDestroy} ) => {
         return (
             <Task  key={id}
                 {...itemProps}
-                onComplated={() => console.log(`complated`) }
                 onDestroy={() => onDestroy(id)} />
         )
     })
