@@ -8,7 +8,6 @@ class Task extends Component {
         field, onDestroy, onEditing, onCompleted} = this.props
 
     let classNames = ''
-    
     if (completed) {
       classNames += ' completed'
     }

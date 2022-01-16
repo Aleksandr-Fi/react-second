@@ -13,14 +13,12 @@ export default class App extends Component {
             {id: 2, completed: false, editing: true, text: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
             {id: 3, completed: false, editing: false, text: 'Active task', created: ' created 5 minutes ago'},
             this.createTodoTask('Active task'),
-            this.createTodoTask('Active task'),
-            this.createTodoTask('Active task')
         ],
 
         footerData: [
-            {id: 1, text: 'All', className: 'selected'},
-            {id: 2, text: 'Active'},
-            {id: 3, text: 'Completed'},
+            {id: 1, text: 'All', selected: true, className: 'selected'},
+            {id: 2, text: 'Active', selected: false},
+            {id: 3, text: 'Completed', selected: false},
         ]
     }
 
