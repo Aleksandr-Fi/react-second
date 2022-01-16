@@ -90,10 +90,10 @@ class App extends Component {
       const idx = todoData.findIndex((el) => el.id === id)
 
       const newArray = [
-        ... todoData.slice(0, idx), 
-        ... todoData.slice(idx + 1)
+        ...todoData.slice(0, idx), 
+        ...todoData.slice(idx + 1)
       ]
-      
+
       return {
         todoData: newArray
       }
