@@ -1,6 +1,9 @@
 import TaskFilter from "./task-filter"
 
-const Footer = ( {filters} ) => {
+const Footer = ( {filters, todos} ) => {
+
+    const leftItems = todos.filter((el) => el.completed === false).length
+    const leftText = `${leftItems} items left`
 
     const elements = filters.map((item) => {
 
@@ -15,7 +18,7 @@ const Footer = ( {filters} ) => {
 
     return (
         <footer className="footer">
-            <span className="todo-count">1 items left</span>
+            <span className="todo-count">{leftText}</span>
             <ul className="filters">
                 { elements }
             </ul>

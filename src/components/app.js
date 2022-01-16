@@ -36,9 +36,7 @@ export default class App extends Component {
     }
 
     onToggleCompleted = (id) => {
-        console.log('edit ' + id);
         this.setState(({ todoData }) => {
-            console.log(todoData);
             const idx = todoData.findIndex((el) => el.id === id)
 
             const oldItem = todoData[idx]
@@ -50,7 +48,6 @@ export default class App extends Component {
                 newItem,
                 ...todoData.slice(idx + 1)
             ]
-            console.log(newArray);
 
             return {
                 todoData: newArray
@@ -59,9 +56,7 @@ export default class App extends Component {
     }
 
     onToggleEditing = (id) => {
-        console.log('edit ' + id);
         this.setState(({ todoData }) => {
-            console.log(todoData);
             const idx = todoData.findIndex((el) => el.id === id)
 
             const oldItem = todoData[idx]
@@ -73,7 +68,6 @@ export default class App extends Component {
                 newItem,
                 ...todoData.slice(idx + 1)
             ]
-            console.log(newArray);
 
             return {
                 todoData: newArray
@@ -82,7 +76,6 @@ export default class App extends Component {
     }
 
     destroyTask = (id) => {
-        console.log('destroy ' + id);
         this.setState(({ todoData }) => {
             const idx = todoData.findIndex((el) => el.id === id)
 
@@ -119,16 +112,18 @@ export default class App extends Component {
     }
 
     render() {
+        const {todoData, footerData} = this.state
+
         return (
             <section className="todoapp">
             <AppHeader />
             <section className="main">
                 <TaskList 
-                    todos={this.state.todoData}
+                    todos={todoData}
                     onDestroy= {this.destroyTask}
                     onEditing={this.onToggleEditing}
                     onCompleted={this.onToggleCompleted} />
-                <Footer filters={this.state.footerData} />
+                <Footer filters={footerData} todos={todoData} />
             </section>
             </section>
         )
