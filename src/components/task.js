@@ -16,7 +16,7 @@ class Task extends Component {
   }
 
   render() {
-    const {completed, editing, description, created, field, onDestroy} = this.props
+    const {completed, editing, text, created, field, onDestroy} = this.props
     const {completes} = this.state
 
     let classNames = ''
@@ -36,7 +36,7 @@ class Task extends Component {
           <input  className="toggle" type="checkbox"
                   onClick={this.onComplated} />
           <label>
-            <span className="description">{description}</span>
+            <span className="description">{text}</span>
             <span className="created">{created}</span>
           </label>
           <button className="icon icon-edit"></button>
