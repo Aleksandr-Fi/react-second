@@ -12,6 +12,8 @@ export default class App extends Component {
             {id: 1, completed: true, editing: false, text: 'Completed task', created: ' created 17 seconds ago'},
             {id: 2, completed: false, editing: true, text: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
             {id: 3, completed: false, editing: false, text: 'Active task', created: ' created 5 minutes ago'},
+            this.createTodoTask('Completed task'),
+            this.createTodoTask('Editing task'),
             this.createTodoTask('Active task'),
         ],
 
@@ -33,42 +35,34 @@ export default class App extends Component {
         }
     }
 
+    onToggleProperty(arr, id, propName) {
+        const idx = arr.findIndex((el) => el.id === id)
+
+        const oldItem = arr[idx]
+        const newItem = {...oldItem,
+            [propName]: !oldItem[propName]}
+
+        return [
+            ...arr.slice(0, idx),
+            newItem,
+            ...arr.slice(idx + 1)
+        ]
+    }
+
     onToggleCompleted = (id) => {
         this.setState(({ todoData }) => {
-            const idx = todoData.findIndex((el) => el.id === id)
-
-            const oldItem = todoData[idx]
-            const newItem = {...oldItem,
-                completed: !oldItem.completed}
-
-            const newArray = [
-                ...todoData.slice(0, idx),
-                newItem,
-                ...todoData.slice(idx + 1)
-            ]
-
+            
             return {
-                todoData: newArray
+                todoData: this.onToggleProperty(todoData, id, 'completed')
             }
         })
     }
 
     onToggleEditing = (id) => {
         this.setState(({ todoData }) => {
-            const idx = todoData.findIndex((el) => el.id === id)
-
-            const oldItem = todoData[idx]
-            const newItem = {...oldItem,
-                editing: !oldItem.editing}
-
-            const newArray = [
-                ...todoData.slice(0, idx),
-                newItem,
-                ...todoData.slice(idx + 1)
-            ]
-
+            
             return {
-                todoData: newArray
+                todoData: this.onToggleProperty(todoData, id, 'editing')
             }
         })
     }
