@@ -3,7 +3,6 @@ import Task from './task'
 const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted} ) => {
 
     const filter = filters.filter((el) => el.selected)[0].text
-    console.log(filter);
 
     let taskArr = todos
     if (filter === 'Active') {

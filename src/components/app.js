@@ -16,8 +16,8 @@ export default class App extends Component {
         ],
 
         footerData: [
-            {id: 1, text: 'All', selected: false},
-            {id: 2, text: 'Active', selected: true},
+            {id: 1, text: 'All', selected: true},
+            {id: 2, text: 'Active', selected: false},
             {id: 3, text: 'Completed', selected: false},
         ]
     }
@@ -104,6 +104,18 @@ export default class App extends Component {
         })
     }
 
+    onClearCompleted = () => {
+        this.setState(({ todoData }) => {
+            console.log(todoData);
+            const newArray = todoData.filter((el) => el.completed === false)
+            console.log(newArray);
+
+            return {
+                todoData: newArray
+            }
+        })
+    }
+
     addTask = (text) => {
         const newTask = {
             text: text,
@@ -141,7 +153,8 @@ export default class App extends Component {
                 <Footer
                     filters={footerData}
                     todos={todoData}
-                    onToggleFilter={this.onToggleFilter} />
+                    onToggleFilter={this.onToggleFilter}
+                    onClearCompleted={this.onClearCompleted} />
             </section>
             </section>
         )
