@@ -2,7 +2,7 @@ import TaskFilter from "./task-filter"
 
 const Footer = ( {filters, todos, onToggleFilter, onClearCompleted} ) => {
 
-    const leftItems = todos.filter((el) => el.completed === false).length
+    const leftItems = todos.filter((el) => !el.completed).length
     const leftText = `${leftItems} items left`
 
     const elements = filters.map((item) => {
