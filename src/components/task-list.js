@@ -6,10 +6,10 @@ const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted} ) => {
 
     let taskArr = todos
     if (filter === 'Active') {
-        taskArr = taskArr.filter((el) => el.completed === false)
+        taskArr = taskArr.filter((el) => !el.completed)
     }
     if (filter === 'Completed') {
-        taskArr = taskArr.filter((el) => el.completed === true)
+        taskArr = taskArr.filter((el) => el.completed)
     }
     const elements = taskArr.map((item) => {
 
