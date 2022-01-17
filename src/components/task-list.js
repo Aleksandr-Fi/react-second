@@ -1,8 +1,18 @@
 import Task from './task'
 
-const TaskList = ( {todos, onDestroy, onEditing, onCompleted} ) => {
+const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted} ) => {
 
-    const elements = todos.map((item) => {
+    const filter = filters.filter((el) => el.selected)[0].text
+    console.log(filter);
+
+    let taskArr = todos
+    if (filter === 'Active') {
+        taskArr = taskArr.filter((el) => el.completed === false)
+    }
+    if (filter === 'Completed') {
+        taskArr = taskArr.filter((el) => el.completed === true)
+    }
+    const elements = taskArr.map((item) => {
 
         const {id, ...itemProps} = item
 

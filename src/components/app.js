@@ -74,7 +74,6 @@ export default class App extends Component {
     }
 
     onToggleFilter = (id) => {
-        console.log('filter ' + id);
         this.setState(({ footerData }) => {
             const newArray = footerData.map((el) => {
                 if (el.id ===id) {
@@ -134,6 +133,7 @@ export default class App extends Component {
             <AppHeader />
             <section className="main">
                 <TaskList 
+                    filters={footerData}
                     todos={todoData}
                     onDestroy= {this.destroyTask}
                     onEditing={this.onToggleEditing}
