@@ -11,7 +11,6 @@ export default class App extends Component {
         todoData: [
             {id: 1, completed: true, editing: false, text: 'Completed task', created: ' created 17 seconds ago'},
             {id: 2, completed: false, editing: true, text: 'Editing task', created: ' created 5 minutes ago', field: {value: 'Editing task'}},
-            {id: 3, completed: false, editing: false, text: 'Active task', created: ' created 5 minutes ago'},
             this.createTodoTask('Completed task'),
             this.createTodoTask('Editing task'),
             this.createTodoTask('Active task'),
@@ -136,7 +135,8 @@ export default class App extends Component {
 
         return (
             <section className="todoapp">
-            <AppHeader />
+            <AppHeader
+                    addTask={this.addTask} />
             <section className="main">
                 <TaskList 
                     filters={footerData}
