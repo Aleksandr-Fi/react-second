@@ -72,9 +72,10 @@ export default class App extends Component {
         this.setState(({ todoData }) => {
             
             return {
-                todoData: this.onToggleProperty(todoData, id, 'editing', text)
+                todoData: this.onToggleProperty(todoData, id, 'text', text)
             }
         })
+        this.onToggleEditing(id)
     }
 
     onToggleFilter = (id) => {

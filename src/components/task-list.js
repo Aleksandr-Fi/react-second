@@ -21,7 +21,7 @@ const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted, onChangeT
                 onDestroy={() => onDestroy(id)}
                 onEditing={() => onEditing(id)}
                 onCompleted={() => onCompleted(id)}
-                onChangeForm={(text) => console.log(text, ': ', id)} />
+                onChangeForm={(text) => onChangeTask(text, id)} />
         )
     })
 
