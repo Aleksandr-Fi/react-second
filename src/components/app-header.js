@@ -6,7 +6,7 @@ class AppHeader extends Component {
     text: ''
   }
 
-    onChengeText = (e) => {
+    onChangeText = (e) => {
       this.setState({
         text: e.target.value
       })
@@ -29,7 +29,7 @@ class AppHeader extends Component {
             <input className="new-todo" 
                 placeholder="What needs to be done?" 
                 autoFocus
-                onChange={this.onChengeText}
+                onChange={this.onChangeText}
                 value={this.state.text} />
           </form>        
         </header>

@@ -68,6 +68,15 @@ export default class App extends Component {
         })
     }
 
+    onChangeTask = (text, id) => {
+        this.setState(({ todoData }) => {
+            
+            return {
+                todoData: this.onToggleProperty(todoData, id, 'editing', text)
+            }
+        })
+    }
+
     onToggleFilter = (id) => {
         this.setState(({ footerData }) => {
             const newArray = footerData.map((el) => {
@@ -145,7 +154,8 @@ export default class App extends Component {
                     todos={todoData}
                     onDestroy= {this.destroyTask}
                     onEditing={this.onToggleEditing}
-                    onCompleted={this.onToggleCompleted} />
+                    onCompleted={this.onToggleCompleted}
+                    onChangeTask={this.onChangeTask} />
                 <Footer
                     filters={footerData}
                     todos={todoData}

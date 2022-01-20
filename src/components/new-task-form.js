@@ -7,16 +7,15 @@ class NewTaskForm extends Component {
     text: ''
     }
 
-    onChengeText = (e) => {
+    onChangeText = (e) => {
         this.setState({
         text: e.target.value
         })
     }
 
     onSubmit = (e) => {
-        // e.preventDefault()
-        // this.props.addTask(this.state.text)
-        console.log(this.state.text);
+        e.preventDefault()
+        this.props.onChangeForm(this.state.text)
         this.setState({
         text: ''
         })
@@ -31,7 +30,7 @@ class NewTaskForm extends Component {
                 <input type="text" 
                     className="edit" 
                     defaultValue={value}
-                    onChange={this.onChengeText} />
+                    onChange={this.onChangeText} />
             </form>
         
         )

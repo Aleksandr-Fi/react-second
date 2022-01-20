@@ -1,6 +1,6 @@
 import Task from './task'
 
-const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted} ) => {
+const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted, onChangeTask} ) => {
 
     const filter = filters.filter((el) => el.selected)[0].text
 
@@ -20,7 +20,8 @@ const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted} ) => {
                 {...itemProps}
                 onDestroy={() => onDestroy(id)}
                 onEditing={() => onEditing(id)}
-                onCompleted={() => onCompleted(id)} />
+                onCompleted={() => onCompleted(id)}
+                onChangeForm={(text) => console.log(text, ': ', id)} />
         )
     })
 
