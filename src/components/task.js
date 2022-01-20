@@ -5,7 +5,7 @@ class Task extends Component {
 
   render() {
     const {completed, editing, text, created,
-        field, onDestroy, onEditing, onCompleted} = this.props
+        onDestroy, onEditing, onCompleted} = this.props
 
     let classNames = ''
     if (completed) {
@@ -29,7 +29,7 @@ class Task extends Component {
           <button className="icon icon-destroy"
                   onClick={onDestroy}></button>
         </div>
-        <NewTaskForm {...field} />
+        <NewTaskForm value={text} />
       </li>
     )
   }
