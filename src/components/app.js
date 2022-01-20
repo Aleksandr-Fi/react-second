@@ -111,9 +111,7 @@ export default class App extends Component {
 
     onClearCompleted = () => {
         this.setState(({ todoData }) => {
-            console.log(todoData);
             const newArray = todoData.filter((el) => !el.completed)
-            console.log(newArray);
 
             return {
                 todoData: newArray
