@@ -29,7 +29,6 @@ class NewTaskForm extends Component {
                     defaultValue={value}
                     onChange={this.onChangeText} />
             </form>
-        
         )
     }
     
