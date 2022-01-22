@@ -22,7 +22,7 @@ class Task extends Component {
                   onClick={onCompleted} />
           <label>
             <span className="description">{text}</span>
-            <span className="created">{created}</span>
+            <span className="created">{`created ${created} ago`}</span>
           </label>
           <button className="icon icon-edit"
                   onClick={onEditing}></button>
