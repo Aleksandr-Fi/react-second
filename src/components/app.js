@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import AppHeader from './app-header';
 import TaskList from "./task-list";
 import Footer from "./footer";
@@ -20,6 +21,8 @@ export default class App extends Component {
             {id: 2, text: 'Active', selected: false},
             {id: 3, text: 'Completed', selected: false},
         ],
+
+        createTime: new Date(),
     }
 
     createTodoTask(text) {
@@ -119,15 +122,15 @@ export default class App extends Component {
     }
 
     addTask = (text) => {
-        const newTask = {
-            text: text,
-            completed: false,
-            editing: false,
-            created: `${(new Date()).getSeconds()} seconds`,
-            id: this.maxId++
-        }
+        this.setState(({ todoData, createTime }) => {
 
-        this.setState(({ todoData }) => {
+            const newTask = {
+                text: text,
+                completed: false,
+                editing: false,
+                created: formatDistanceToNowStrict(createTime),
+                id: this.maxId++
+            }
             const newArr = [
                 ...todoData,
                 newTask
