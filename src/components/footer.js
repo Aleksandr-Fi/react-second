@@ -5,6 +5,10 @@ const Footer = ( {filters, todos, onToggleFilter, onClearCompleted} ) => {
     const leftItems = todos.filter((el) => !el.completed).length
     const leftText = `${leftItems} items left`
 
+    Footer.defaultProps = {
+        onClearCompleted: () => {},
+    }
+
     const elements = filters.map((item) => {
 
         const {id, ...itemProps} = item

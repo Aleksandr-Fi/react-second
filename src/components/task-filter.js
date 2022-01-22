@@ -6,6 +6,10 @@ const TaskFilter = ( {text, selected, onToggleFilter}) => {
         classNames += ' selected'
     }
 
+    TaskFilter.defaultProps = {
+        onToggleFilter: () => {},
+    }
+
     return <button className={classNames}
                     onClick={onToggleFilter}>{text}</button>
 }
