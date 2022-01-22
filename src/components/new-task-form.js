@@ -4,7 +4,7 @@ import { Component } from "react"
 class NewTaskForm extends Component {
 
     state = {
-    text: ''
+    text: this.props.value
     }
 
     onChangeText = (e) => {
@@ -16,9 +16,6 @@ class NewTaskForm extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         this.props.onChangeForm(this.state.text)
-        this.setState({
-        text: ''
-        })
     }
 
     render() {
