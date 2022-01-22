@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import AppHeader from './app-header';
 import TaskList from "./task-list";
 import Footer from "./footer";
@@ -10,8 +9,8 @@ export default class App extends Component {
 
     state = {
         todoData: [
-            {id: 1, completed: false, editing: false, text: 'Completed task', created: `${(new Date()).getSeconds()} seconds`,},
-            {id: 2, completed: false, editing: true, text: 'Editing task', created: '5 minutes ago'},
+            {id: 1, completed: false, editing: false, text: 'Completed task', created: new Date(),},
+            {id: 2, completed: false, editing: true, text: 'Editing task', created: new Date(),},
             this.createTodoTask('Active task'),
             this.createTodoTask('Completed task'),
         ],
@@ -21,8 +20,6 @@ export default class App extends Component {
             {id: 2, text: 'Active', selected: false},
             {id: 3, text: 'Completed', selected: false},
         ],
-
-        createTime: new Date(),
     }
 
     createTodoTask(text) {
@@ -30,7 +27,7 @@ export default class App extends Component {
             text: text,
             completed: false,
             editing: false,
-            created: `${(new Date()).getSeconds()} seconds`,
+            created: new Date(),
             field: {value: text},
             id: this.maxId++
         }
@@ -122,15 +119,16 @@ export default class App extends Component {
     }
 
     addTask = (text) => {
-        this.setState(({ todoData, createTime }) => {
 
-            const newTask = {
-                text: text,
-                completed: false,
-                editing: false,
-                created: formatDistanceToNowStrict(createTime),
-                id: this.maxId++
-            }
+        const newTask = {
+            text: text,
+            completed: false,
+            editing: false,
+            created: new Date(),
+            id: this.maxId++
+        }
+        
+        this.setState(({ todoData }) => {
             const newArr = [
                 ...todoData,
                 newTask

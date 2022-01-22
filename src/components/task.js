@@ -1,4 +1,5 @@
 import { Component } from "react"
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import NewTaskForm from './new-task-form'
 
 class Task extends Component {
@@ -22,7 +23,7 @@ class Task extends Component {
                   onClick={onCompleted} />
           <label>
             <span className="description">{text}</span>
-            <span className="created">{`created ${created} ago`}</span>
+            <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
           </label>
           <button className="icon icon-edit"
                   onClick={onEditing}></button>
