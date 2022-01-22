@@ -11,16 +11,16 @@ export default class App extends Component {
         todoData: [
             {id: 1, completed: false, editing: false, text: 'Completed task', created: ' created 17 seconds ago'},
             {id: 2, completed: false, editing: true, text: 'Editing task', created: ' created 5 minutes ago'},
+            this.createTodoTask('Active task'),
             this.createTodoTask('Completed task'),
             this.createTodoTask('Editing task'),
-            this.createTodoTask('Active task'),
         ],
 
         footerData: [
             {id: 1, text: 'All', selected: true},
             {id: 2, text: 'Active', selected: false},
             {id: 3, text: 'Completed', selected: false},
-        ]
+        ],
     }
 
     createTodoTask(text) {
