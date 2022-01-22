@@ -14,6 +14,13 @@ const Task = (props) => {
     classNames += ' editing'
   }
 
+  Task.defaultProps = {
+    onDestroy: () => {},
+    onEditing: () => {},
+    onCompleted: () => {},
+    onChangeForm: () => {},
+  }
+
   return (
     <li className={classNames}>
       <div className="view">
