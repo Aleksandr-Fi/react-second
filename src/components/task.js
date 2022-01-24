@@ -1,17 +1,18 @@
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
-import NewTaskForm from './new-task-form'
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import NewTaskForm from './new-task-form';
 
-const Task = (props) => {
-  
-  const {completed, editing, text, created,
-      onDestroy, onEditing, onCompleted, onChangeForm} = props
+function Task(props) {
+  const {
+    completed, editing, text, created,
+    onDestroy, onEditing, onCompleted, onChangeForm,
+  } = props;
 
-  let classNames = ''
+  let classNames = '';
   if (completed) {
-    classNames += ' completed'
+    classNames += ' completed';
   }
   if (editing) {
-    classNames += ' editing'
+    classNames += ' editing';
   }
 
   Task.defaultProps = {
@@ -19,26 +20,35 @@ const Task = (props) => {
     onEditing: () => {},
     onCompleted: () => {},
     onChangeForm: () => {},
-  }
+  };
 
   return (
     <li className={classNames}>
       <div className="view">
-        <input  className="toggle" type="checkbox"
-                onClick={onCompleted} />
+        <input
+          className="toggle"
+          type="checkbox"
+          onClick={onCompleted}
+        />
         <label>
           <span className="description">{text}</span>
           <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
         </label>
-        <button className="icon icon-edit"
-                onClick={onEditing}></button>
-        <button className="icon icon-destroy"
-                onClick={onDestroy}></button>
+        <button
+          className="icon icon-edit"
+          onClick={onEditing}
+        />
+        <button
+          className="icon icon-destroy"
+          onClick={onDestroy}
+        />
       </div>
-      <NewTaskForm value={text}
-                    onChangeForm={(text) => onChangeForm(text)} />
+      <NewTaskForm
+        value={text}
+        onChangeForm={(text) => onChangeForm(text)}
+      />
     </li>
-  )
+  );
 }
 
-export default Task
+export default Task;

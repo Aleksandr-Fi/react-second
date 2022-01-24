@@ -1,37 +1,38 @@
-import { Component } from "react"
-
+import { Component } from 'react';
 
 class NewTaskForm extends Component {
+  state = {
+    text: this.props.value,
+  };
 
-    state = {
-    text: this.props.value
-    }
+  onChangeText = (e) => {
+    this.setState({
+      text: e.target.value,
+    });
+  };
 
-    onChangeText = (e) => {
-        this.setState({
-        text: e.target.value
-        })
-    }
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.onChangeForm(this.state.text);
+  };
 
-    onSubmit = (e) => {
-        e.preventDefault()
-        this.props.onChangeForm(this.state.text)
-    }
+  render() {
+    const { value } = this.props;
 
-    render() {
-        const {value} = this.props
-
-        return (
-            <form className=""
-                    onSubmit={this.onSubmit}>
-                <input type="text" 
-                    className="edit" 
-                    defaultValue={value}
-                    onChange={this.onChangeText} />
-            </form>
-        )
-    }
-    
+    return (
+      <form
+        className=""
+        onSubmit={this.onSubmit}
+      >
+        <input
+          type="text"
+          className="edit"
+          defaultValue={value}
+          onChange={this.onChangeText}
+        />
+      </form>
+    );
+  }
 }
 
-export default NewTaskForm
+export default NewTaskForm;
