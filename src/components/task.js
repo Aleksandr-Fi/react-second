@@ -8,7 +8,7 @@ const Task = (props) => {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
     text: propTypes.string.isRequired,
-    created: propTypes.any.isRequired,
+    created: propTypes.instanceOf(Date).isRequired,
     onDestroy: propTypes.func.isRequired,
     onEditing: propTypes.func.isRequired,
     onCompleted: propTypes.func.isRequired,
