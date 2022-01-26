@@ -1,6 +1,11 @@
 import { Component } from "react";
+import propTypes from "prop-types";
 
 class AppHeader extends Component {
+
+  static propTypes = {
+    addTask: propTypes.func.isRequired
+  }
 
   state = {
     text: ''
@@ -28,6 +33,7 @@ class AppHeader extends Component {
                 onSubmit={this.onSubmit}>
             <input className="new-todo" 
                 placeholder="What needs to be done?" 
+                // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 onChange={this.onChangeText}
                 value={this.state.text} />

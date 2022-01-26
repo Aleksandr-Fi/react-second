@@ -1,6 +1,14 @@
 import TaskFilter from "./task-filter"
+import propTypes from "prop-types"
 
 const Footer = ( {filters, todos, onToggleFilter, onClearCompleted} ) => {
+
+    Footer.propTypes = {
+        filters: propTypes.array.isRequired,
+        todos: propTypes.array.isRequired,
+        onToggleFilter: propTypes.func.isRequired,
+        onClearCompleted: propTypes.func.isRequired
+    }
 
     const leftItems = todos.filter((el) => !el.completed).length
     const leftText = `${leftItems} items left`

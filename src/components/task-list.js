@@ -4,7 +4,12 @@ import propTypes from 'prop-types'
 const TaskList = ( {todos, filters, onDestroy, onEditing, onCompleted, onChangeTask} ) => {
 
     TaskList.propTypes = {
-        onChangeForm: propTypes.string,
+        todos: propTypes.array.isRequired,
+        filters: propTypes.array.isRequired,
+        onDestroy: propTypes.func.isRequired,
+        onEditing: propTypes.func.isRequired,
+        onCompleted: propTypes.func.isRequired,
+        onChangeTask: propTypes.func.isRequired
     }
 
     const filter = filters.filter((el) => el.selected)[0].text

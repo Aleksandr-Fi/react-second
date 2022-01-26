@@ -1,7 +1,12 @@
 import { Component } from "react"
-
+import propTypes from "prop-types"
 
 class NewTaskForm extends Component {
+
+    static propTypes = {
+        value: propTypes.string.isRequired,
+        onChangeForm: propTypes.func.isRequired
+    }
 
     state = {
     text: this.props.value

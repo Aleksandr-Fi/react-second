@@ -1,15 +1,19 @@
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import NewTaskForm from './new-task-form'
-// import propTypes from "prop-types";
+import propTypes from "prop-types";
 
 const Task = (props) => {
 
-  // propTypes: {
-  //   completed: PropTypes.string.isRequired,
-  //   editing: PropTypes.string.isRequired,
-  //   text: PropTypes.string.isRequired,
-  //   created: PropTypes.string.isRequired,
-  // }
+  Task.propTypes = {
+    completed: propTypes.bool.isRequired,
+    editing: propTypes.bool.isRequired,
+    text: propTypes.string.isRequired,
+    created: propTypes.any.isRequired,
+    onDestroy: propTypes.func.isRequired,
+    onEditing: propTypes.func.isRequired,
+    onCompleted: propTypes.func.isRequired,
+    onChangeForm: propTypes.func.isRequired
+  }
   
   const {completed, editing, text, created,
       onDestroy, onEditing, onCompleted, onChangeForm} = props
