@@ -39,6 +39,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -60,5 +61,7 @@
   },
   "lint-staged": {    
     "*.(js|jsx)": ["npm run lint:write", "npm run format", "git add"]
+=======
+>>>>>>> parent of 02dd193 (install pakeges)
   }
 }
