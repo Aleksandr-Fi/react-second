@@ -31,7 +31,7 @@ const Footer = ({ filters, todos, onToggleFilter, onClearCompleted }) => {
     <footer className="footer">
       <span className="todo-count">{leftText}</span>
       <ul className="filters">{elements}</ul>
-      <button className="clear-completed" onClick={onClearCompleted}>
+      <button className="clear-completed" title="clear-completed" onClick={onClearCompleted}>
         Clear completed
       </button>
     </footer>

@@ -7,9 +7,9 @@ const TaskFilter = ({ text, selected, onToggleFilter }) => {
     onToggleFilter: propTypes.func.isRequired,
   }
 
-  let classNames = ''
+  let classNames = false
   if (selected) {
-    classNames += ' selected'
+    classNames = 'selected'
   }
 
   TaskFilter.defaultProps = {
@@ -17,7 +17,7 @@ const TaskFilter = ({ text, selected, onToggleFilter }) => {
   }
 
   return (
-    <button className={classNames} onClick={onToggleFilter}>
+    <button className={classNames} title={text} onClick={onToggleFilter}>
       {text}
     </button>
   )
