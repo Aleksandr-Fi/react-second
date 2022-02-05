@@ -17,12 +17,12 @@ const Task = (props) => {
 
   const { completed, editing, text, created, checked, onDestroy, onEditing, onCompleted, onChangeForm } = props
 
-  let classNames = false
+  let classNames = ''
   if (completed) {
-    classNames = 'completed'
+    classNames += ' completed'
   }
   if (editing) {
-    classNames = 'editing'
+    classNames += ' editing'
   }
 
   Task.defaultProps = {
@@ -40,8 +40,8 @@ const Task = (props) => {
           <span className="description">{text}</span>
           <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
         </label>
-        <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
-        <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
+        <button className="icon icon-edit" onClick={onEditing}></button>
+        <button className="icon icon-destroy" onClick={onDestroy}></button>
       </div>
       <NewTaskForm value={text} onChangeForm={(text) => onChangeForm(text)} />
     </li>
