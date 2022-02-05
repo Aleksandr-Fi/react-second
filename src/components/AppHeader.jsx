@@ -23,27 +23,6 @@ class AppHeader extends Component {
       })
     }
   }
-  //   static propTypes = {
-  //     addTask: propTypes.func.isRequired,
-  //   }
-
-  //   state = {
-  //     text: '',
-  //   }
-
-  //   onChangeText = (e) => {
-  //     this.setState({
-  //       text: e.target.value,
-  //     })
-  //   }
-
-  // onSubmit = (e) => {
-  //   e.preventDefault()
-  //   this.props.addTask(this.state.text)
-  //   this.setState({
-  //     text: '',
-  //   })
-  // }
 
   render() {
     return (

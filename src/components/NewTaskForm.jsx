@@ -23,26 +23,6 @@ class NewTaskForm extends Component {
     }
   }
 
-  //   static propTypes = {
-  //     value: propTypes.string.isRequired,
-  //     onChangeForm: propTypes.func.isRequired,
-  //   }
-
-  //   state = {
-  //     text: this.props.value,
-  //   }
-
-  //   onChangeText = (e) => {
-  //     this.setState({
-  //       text: e.target.value,
-  //     })
-  //   }
-
-  //   onSubmit = (e) => {
-  //     e.preventDefault()
-  //     this.props.onChangeForm(this.state.text)
-  //   }
-
   render() {
     const { value } = this.props
 
