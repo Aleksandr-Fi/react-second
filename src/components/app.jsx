@@ -12,10 +12,11 @@ export default class App extends Component {
       todoData: [
         {
           id: 1,
-          completed: false,
+          completed: true,
           editing: false,
           text: 'Completed task',
           created: new Date(),
+          checked: true,
         },
         {
           id: 2,
@@ -23,9 +24,9 @@ export default class App extends Component {
           editing: true,
           text: 'Editing task',
           created: new Date(),
+          checked: false,
         },
         this.createTodoTask('Active task'),
-        this.createTodoTask('Completed task'),
       ],
 
       footerData: [
@@ -36,8 +37,10 @@ export default class App extends Component {
     }
     this.onToggleCompleted = (id) => {
       this.setState(({ todoData }) => {
+        let newData = this.onToggleProperty(todoData, id, 'completed')
+        newData = this.onToggleProperty(newData, id, 'checked')
         return {
-          todoData: this.onToggleProperty(todoData, id, 'completed'),
+          todoData: newData,
         }
       })
     }
@@ -124,6 +127,7 @@ export default class App extends Component {
       created: new Date(),
       field: { value: text },
       id: this.maxId++,
+      checked: false,
     }
   }
 

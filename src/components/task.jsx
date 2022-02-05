@@ -15,7 +15,7 @@ const Task = (props) => {
     onChangeForm: propTypes.func.isRequired,
   }
 
-  const { completed, editing, text, created, onDestroy, onEditing, onCompleted, onChangeForm } = props
+  const { completed, editing, text, created, checked, onDestroy, onEditing, onCompleted, onChangeForm } = props
 
   let classNames = ''
   if (completed) {
@@ -35,7 +35,7 @@ const Task = (props) => {
   return (
     <li className={classNames}>
       <div className="view">
-        <input className="toggle" type="checkbox" onClick={onCompleted} />
+        <input className="toggle" type="checkbox" checked={checked} onClick={onCompleted} />
         <label>
           <span className="description">{text}</span>
           <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
