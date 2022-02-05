@@ -18,8 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
+    "lint": "npx eslint --ext .jsx --ext .js src/",
+    "lint:fix": "npx eslint --fix --ext .jsx --ext .js src/",
     "format": "prettier ./src"
   },
   "eslintConfig": {
@@ -53,12 +53,16 @@
     "lint-staged": "^12.3.1",
     "prettier": "^2.5.1"
   },
-  "husky": {    
-    "hooks": {      
-      "pre-commit": "npm run format"  
-    }  
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
   },
-  "lint-staged": {    
-    "*.(js|jsx)": ["npm run lint:fix", "npm run format", "git add"]  
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "npm run lint:fix",
+      "npm run format",
+      "git add"
+    ]
   }
 }

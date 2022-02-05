@@ -1,9 +1,9 @@
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
+import propTypes from 'prop-types'
+
 import NewTaskForm from './new-task-form'
-import propTypes from "prop-types";
 
 const Task = (props) => {
-
   Task.propTypes = {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
@@ -12,11 +12,10 @@ const Task = (props) => {
     onDestroy: propTypes.func.isRequired,
     onEditing: propTypes.func.isRequired,
     onCompleted: propTypes.func.isRequired,
-    onChangeForm: propTypes.func.isRequired
+    onChangeForm: propTypes.func.isRequired,
   }
-  
-  const {completed, editing, text, created,
-      onDestroy, onEditing, onCompleted, onChangeForm} = props
+
+  const { completed, editing, text, created, onDestroy, onEditing, onCompleted, onChangeForm } = props
 
   let classNames = ''
   if (completed) {
@@ -36,19 +35,15 @@ const Task = (props) => {
   return (
     <li className={classNames}>
       <div className="view">
-        <input  className="toggle" type="checkbox"
-                onClick={onCompleted} />
+        <input className="toggle" type="checkbox" onClick={onCompleted} />
         <label>
           <span className="description">{text}</span>
           <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
         </label>
-        <button className="icon icon-edit"
-                onClick={onEditing}></button>
-        <button className="icon icon-destroy"
-                onClick={onDestroy}></button>
+        <button className="icon icon-edit" onClick={onEditing}></button>
+        <button className="icon icon-destroy" onClick={onDestroy}></button>
       </div>
-      <NewTaskForm value={text}
-                    onChangeForm={(text) => onChangeForm(text)} />
+      <NewTaskForm value={text} onChangeForm={(text) => onChangeForm(text)} />
     </li>
   )
 }
