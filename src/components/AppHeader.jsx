@@ -17,7 +17,9 @@ class AppHeader extends Component {
     }
     this.onSubmit = (e) => {
       e.preventDefault()
-      this.props.addTask(this.state.text)
+      if (this.state.text.trim()) {
+        this.props.addTask(this.state.text)
+      }
       this.setState({
         text: '',
       })
@@ -28,7 +30,7 @@ class AppHeader extends Component {
     return (
       <header className="header">
         <h1>todos</h1>
-        <form onSubmit={this.onSubmit}>
+        <form className="" onSubmit={this.onSubmit}>
           <input
             className="new-todo"
             placeholder="What needs to be done?"
