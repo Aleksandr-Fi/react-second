@@ -27,7 +27,7 @@ class NewTaskForm extends Component {
     const { value } = this.props
 
     return (
-      <form className="" onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit}>
         <input type="text" className="edit" defaultValue={value} onChange={this.onChangeText} />
       </form>
     )
