@@ -35,7 +35,7 @@ const Task = (props) => {
   return (
     <li className={classNames}>
       <div className="view">
-        <input className="toggle" type="checkbox" checked={checked} onClick={onCompleted} />
+        <input className="toggle" type="checkbox" onChange={onCompleted} defaultChecked={checked} />
         <label>
           <span className="description">{text}</span>
           <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
