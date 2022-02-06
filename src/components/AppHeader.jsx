@@ -7,9 +7,6 @@ class AppHeader extends Component {
     this.state = {
       text: '',
     }
-    this.propTypes = {
-      addTask: propTypes.func.isRequired,
-    }
     this.onChangeText = (e) => {
       this.setState({
         text: e.target.value,
@@ -24,6 +21,9 @@ class AppHeader extends Component {
         text: '',
       })
     }
+  }
+  static propTypes = {
+    addTask: propTypes.func.isRequired,
   }
 
   render() {
