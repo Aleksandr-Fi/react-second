@@ -4,10 +4,6 @@ import propTypes from 'prop-types'
 class NewTaskForm extends Component {
   constructor(props) {
     super(props)
-    this.propTypes = {
-      value: propTypes.string.isRequired,
-      onChangeForm: propTypes.func.isRequired,
-    }
     this.state = {
       text: this.props.value,
     }
@@ -21,6 +17,10 @@ class NewTaskForm extends Component {
       e.preventDefault()
       this.props.onChangeForm(this.state.text)
     }
+  }
+  static propTypes = {
+    value: propTypes.string.isRequired,
+    onChangeForm: propTypes.func.isRequired,
   }
 
   render() {
