@@ -64,13 +64,7 @@ export default class App extends Component {
 
     this.onToggleFilter = (id) => {
       this.setState(({ footerData }) => {
-        const newArray = footerData.map((el) => {
-          if (el.id === id) {
-            return { ...el, selected: true }
-          } else {
-            return { ...el, selected: false }
-          }
-        })
+        const newArray = this.changeActiveElement(footerData, id, 'selected')
 
         return {
           footerData: newArray,
@@ -139,6 +133,16 @@ export default class App extends Component {
     const newItem = { ...oldItem, [propName]: newValue }
 
     return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)]
+  }
+
+  changeActiveElement(arr, id, propName) {
+    return arr.map((el) => {
+      if (el.id === id) {
+        return { ...el, [propName]: true }
+      } else {
+        return { ...el, [propName]: false }
+      }
+    })
   }
 
   render() {
