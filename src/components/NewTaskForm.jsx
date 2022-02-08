@@ -28,7 +28,9 @@ class NewTaskForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input type="text" className="edit" defaultValue={value} onChange={this.onChangeText} />
+        <label className="input-label">
+          <input type="text" className="edit" defaultValue={value} onChange={this.onChangeText} />
+        </label>
       </form>
     )
   }
