@@ -64,10 +64,8 @@ export default class App extends Component {
 
     this.onToggleFilter = (id) => {
       this.setState(({ footerData }) => {
-        const newArray = this.changeActiveElement(footerData, id, 'selected')
-
         return {
-          footerData: newArray,
+          footerData: this.changeActiveElement(footerData, id, 'selected'),
         }
       })
     }
