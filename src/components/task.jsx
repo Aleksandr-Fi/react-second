@@ -33,7 +33,7 @@ const Task = (props) => {
   }
 
   return (
-    <li className={classNames}>
+    <li className={classNames ? classNames : undefined}>
       <div className="view">
         <input className="toggle" type="checkbox" onChange={onCompleted} defaultChecked={checked} />
         <label>

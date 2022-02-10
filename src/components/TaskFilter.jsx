@@ -17,7 +17,7 @@ const TaskFilter = ({ text, selected, onToggleFilter }) => {
   }
 
   return (
-    <button className={classNames} title={text} onClick={onToggleFilter}>
+    <button className={classNames ? classNames : undefined} title={text} onClick={onToggleFilter}>
       {text}
     </button>
   )
