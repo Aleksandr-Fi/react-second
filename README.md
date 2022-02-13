@@ -1,6 +1,6 @@
 # link to the deployed application
 
-https://react-second-aleksandr-fi.vercel.app/
+https://react-second-fnsl9htzg-aleksandr-fi.vercel.app/
 
 # Getting Started with Create React App
 
