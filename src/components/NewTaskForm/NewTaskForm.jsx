@@ -12,7 +12,6 @@ class NewTaskForm extends Component {
         text: e.target.value,
       })
     }
-
     this.onSubmit = (e) => {
       e.preventDefault()
       this.props.onChangeForm(this.state.text)
