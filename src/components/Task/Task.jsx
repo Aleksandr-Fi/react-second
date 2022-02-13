@@ -5,7 +5,7 @@ import { Component } from 'react'
 import NewTaskForm from '../NewTaskForm/NewTaskForm'
 
 export default class Task extends Component {
-  propTypes = {
+  static propTypes = {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
     text: propTypes.string.isRequired,
@@ -14,6 +14,13 @@ export default class Task extends Component {
     onEditing: propTypes.func.isRequired,
     onCompleted: propTypes.func.isRequired,
     onChangeForm: propTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    onDestroy: () => {},
+    onEditing: () => {},
+    onCompleted: () => {},
+    onChangeForm: () => {},
   }
 
   getClassName() {
@@ -25,13 +32,6 @@ export default class Task extends Component {
       classNames += ' editing'
     }
     return classNames
-  }
-
-  defaultProps = {
-    onDestroy: () => {},
-    onEditing: () => {},
-    onCompleted: () => {},
-    onChangeForm: () => {},
   }
 
   render() {
