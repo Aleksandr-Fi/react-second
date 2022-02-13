@@ -30,7 +30,7 @@ class AppHeader extends Component {
     return (
       <header className="header">
         <h1>todos</h1>
-        <form className="" onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <label className="input-label">
             <input
               className="new-todo"
