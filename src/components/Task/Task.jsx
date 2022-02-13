@@ -17,12 +17,12 @@ const Task = (props) => {
 
   const { completed, editing, text, created, checked, onDestroy, onEditing, onCompleted, onChangeForm } = props
 
-  let classNames = false
+  let classNames = ''
   if (completed) {
-    classNames = 'completed'
+    classNames += 'completed'
   }
   if (editing) {
-    classNames = 'editing'
+    classNames += ' editing'
   }
 
   Task.defaultProps = {
@@ -33,7 +33,7 @@ const Task = (props) => {
   }
 
   return (
-    <li className={classNames ? classNames : undefined}>
+    <li className={classNames}>
       <div className="view">
         <label className="input-label label-toggle">
           <input className="toggle" type="checkbox" onChange={onCompleted} defaultChecked={checked} />
