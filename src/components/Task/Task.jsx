@@ -2,9 +2,23 @@ import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
 import propTypes from 'prop-types'
 import { Component } from 'react'
 
-import NewTaskForm from '../NewTaskForm/NewTaskForm'
-
 export default class Task extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      text: this.props.text,
+    }
+    this.onChangeText = (e) => {
+      this.setState({
+        text: e.target.value,
+      })
+    }
+    this.onSubmit = (e) => {
+      e.preventDefault()
+      this.props.onChangeForm(this.state.text)
+    }
+  }
+
   static propTypes = {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
@@ -35,7 +49,7 @@ export default class Task extends Component {
   }
 
   render() {
-    const { text, created, checked, onDestroy, onEditing, onCompleted, onChangeForm } = this.props
+    const { text, created, checked, onDestroy, onEditing, onCompleted } = this.props
     return (
       <li className={this.getClassName()}>
         <div className="view">
@@ -49,7 +63,17 @@ export default class Task extends Component {
           <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
           <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
         </div>
-        <NewTaskForm value={text} onChangeForm={(text) => onChangeForm(text)} />
+        <form onSubmit={this.onSubmit}>
+          <label className="input-label label-edit">
+            <input
+              // ref={(input) => input && input.focus()}
+              type="text"
+              className="edit"
+              defaultValue={text}
+              onChange={this.onChangeText}
+            />
+          </label>
+        </form>
       </li>
     )
   }
