@@ -66,7 +66,7 @@ export default class Task extends Component {
         <form onSubmit={this.onSubmit}>
           <label className="input-label label-edit">
             <input
-              // ref={(input) => input && input.focus()}
+              ref={this.props.editing ? (input) => input && input.focus() : null}
               type="text"
               className="edit"
               defaultValue={text}
