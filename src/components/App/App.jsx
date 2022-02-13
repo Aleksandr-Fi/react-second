@@ -1,8 +1,8 @@
 import { Component } from 'react'
 
-import AppHeader from './AppHeader'
-import TaskList from './TaskList'
-import Footer from './Footer'
+import AppHeader from '../AppHeader/AppHeader'
+import TaskList from '../TaskList/TaskList'
+import Footer from '../Footer/Footer'
 
 export default class App extends Component {
   constructor(props) {

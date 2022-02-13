@@ -1,7 +1,7 @@
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
 import propTypes from 'prop-types'
 
-import NewTaskForm from './NewTaskForm'
+import NewTaskForm from '../NewTaskForm/NewTaskForm'
 
 const Task = (props) => {
   Task.propTypes = {

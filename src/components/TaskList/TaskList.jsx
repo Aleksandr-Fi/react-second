@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 
-import Task from './Task'
+import Task from '../Task/Task'
 
 const TaskList = ({ todos, filters, onDestroy, onEditing, onCompleted, onChangeTask }) => {
   TaskList.propTypes = {

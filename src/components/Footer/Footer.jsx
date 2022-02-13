@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 
-import TaskFilter from './TaskFilter'
+import TaskFilter from '../TaskFilter/TaskFilter'
 
 const Footer = ({ filters, todos, onToggleFilter, onClearCompleted }) => {
   Footer.propTypes = {
