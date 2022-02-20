@@ -57,8 +57,13 @@ export default class Task extends Component {
             <input className="toggle" type="checkbox" onChange={onCompleted} defaultChecked={checked} />
           </label>
           <label>
-            <span className="description">{text}</span>
-            <span className="created">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
+            <span className="title">{text}</span>
+            <span className="description">
+              <button className="icon icon-play"></button>
+              <button className="icon icon-pause"></button>
+              {' 12:25 '}
+            </span>
+            <span className="description">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
           </label>
           <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
           <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
@@ -69,7 +74,7 @@ export default class Task extends Component {
               ref={this.props.editing ? (input) => input && input.focus() : null}
               type="text"
               className="edit"
-              defaultValue={text}
+              // defaultValue={text}
               onChange={this.onChangeText}
             />
           </label>
