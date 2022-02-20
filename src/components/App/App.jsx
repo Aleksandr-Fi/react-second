@@ -14,7 +14,7 @@ export default class App extends Component {
           id: 1,
           completed: true,
           editing: false,
-          text: 'Completed task',
+          text: 'fw',
           created: new Date(),
           checked: true,
         },
@@ -26,7 +26,7 @@ export default class App extends Component {
           created: new Date(),
           checked: false,
         },
-        this.createTodoTask('Active task'),
+        this.createTodoTask('fw'),
       ],
 
       footerData: [
