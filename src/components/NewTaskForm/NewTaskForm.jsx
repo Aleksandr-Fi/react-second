@@ -29,7 +29,7 @@ class NewTaskForm extends Component {
   render() {
     return (
       <form className="new-todo-form" onSubmit={this.onSubmit}>
-        <label className="input-label">
+        <label className="input-label label-new-todo">
           <input
             className="new-todo"
             placeholder="Task"
@@ -38,12 +38,12 @@ class NewTaskForm extends Component {
             value={this.state.text}
           />
         </label>
-        {/* <label className="input-label"> */}
-        <input className="new-todo-form__timer" placeholder="Min" autoFocus />
-        {/* </label> */}
-        {/* <label className="input-label"> */}
-        <input className="new-todo-form__timer" placeholder="Sec" autoFocus />
-        {/* </label> */}
+        <label className="input-label label-new-todo-form__timer">
+          <input className="new-todo-form__timer" placeholder="Min" autoFocus />
+        </label>
+        <label className="input-label label-new-todo-form__timer">
+          <input className="new-todo-form__timer" placeholder="Sec" autoFocus />
+        </label>
       </form>
     )
   }
