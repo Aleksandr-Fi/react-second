@@ -29,15 +29,15 @@ class NewTaskForm extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <label className="input-label">
-          <input
-            className="new-todo"
-            placeholder="What needs to be done?"
-            autoFocus
-            onChange={this.onChangeText}
-            value={this.state.text}
-          />
-        </label>
+        {/* <label className="input-label"> */}
+        <input className="new-todo" placeholder="Task" autoFocus onChange={this.onChangeText} value={this.state.text} />
+        {/* </label> */}
+        {/* <label className="input-label"> */}
+        <input className="new-todo-form__timer" placeholder="Min" autoFocus />
+        {/* </label> */}
+        {/* <label className="input-label"> */}
+        <input className="new-todo-form__timer" placeholder="Sec" autoFocus />
+        {/* </label> */}
       </form>
     )
   }
