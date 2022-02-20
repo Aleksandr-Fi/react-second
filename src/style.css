@@ -87,6 +87,10 @@ label {
   text-rendering: optimizeLegibility;
 }
 
+.heading {
+  margin-top: 28px;
+}
+
 .new-todo-form {
 	display: flex;
 	margin-bottom: 0;
