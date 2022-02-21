@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { formatDistanceToNowStrict } from 'date-fns'
 
 import AppHeader from '../AppHeader/AppHeader'
 import TaskList from '../TaskList/TaskList'
@@ -7,7 +8,7 @@ import Footer from '../Footer/Footer'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.maxId = 100
+    this.maxId = 4
     this.state = {
       todoData: [
         {
@@ -15,16 +16,26 @@ export default class App extends Component {
           completed: true,
           editing: false,
           text: 'fw',
-          created: new Date(),
+          createdData: new Date(),
+          created: '0 second',
           checked: true,
+          min: 0,
+          sec: 5,
+          startTimer: false,
+          // intervalId: false,
         },
         {
           id: 2,
           completed: false,
           editing: true,
           text: 'Editing task',
-          created: new Date(),
+          createdData: new Date(),
+          created: '0 second',
           checked: false,
+          min: 12,
+          sec: 25,
+          startTimer: false,
+          intervalId: false,
         },
         this.createTodoTask('fw'),
       ],
@@ -97,8 +108,13 @@ export default class App extends Component {
         text: text,
         completed: false,
         editing: false,
-        created: new Date(),
+        createdData: new Date(),
+        created: '0 second',
         id: this.maxId++,
+        min: 12,
+        sec: 25,
+        startTimer: false,
+        intervalId: false,
       }
 
       this.setState(({ todoData }) => {
@@ -111,15 +127,38 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.stateRefresh()
+  }
+
+  stateRefresh = () => {
+    setInterval(() => {
+      this.setState(({ todoData }) => {
+        const newArr = [...todoData]
+        newArr.forEach((item) => {
+          item.created = formatDistanceToNowStrict(item.createdData)
+        })
+        return {
+          todoData: newArr,
+        }
+      })
+    }, 1000)
+  }
+
   createTodoTask(text) {
     return {
       text: text,
       completed: false,
       editing: false,
-      created: new Date(),
+      createdData: new Date(),
+      created: '0 second',
       field: { value: text },
       id: this.maxId++,
       checked: false,
+      min: 12,
+      sec: 4,
+      startTimer: false,
+      intervalId: false,
     }
   }
 
@@ -127,10 +166,15 @@ export default class App extends Component {
     const idx = arr.findIndex((el) => el.id === id)
 
     const oldItem = arr[idx]
-    let newValue = propValue ? propValue : !oldItem[propName]
+    let newValue = propValue || propValue === 0 ? propValue : !oldItem[propName]
     const newItem = { ...oldItem, [propName]: newValue }
 
     return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)]
+  }
+
+  getItem(arr, id) {
+    const idx = arr.findIndex((el) => el.id === id)
+    return arr[idx]
   }
 
   changeActiveElement(arr, id, propName) {
@@ -139,6 +183,56 @@ export default class App extends Component {
         return { ...el, [propName]: true }
       } else {
         return { ...el, [propName]: false }
+      }
+    })
+  }
+
+  timeDown(min, sec) {
+    if (!sec) {
+      return { newMin: min - 1, newSec: 59 }
+    }
+    return { newMin: min, newSec: sec - 1 }
+  }
+
+  timer = (id) => {
+    this.setState(({ todoData }) => {
+      let oldItem = this.getItem(todoData, id)
+      if (!oldItem.min && !oldItem.sec) {
+        this.onStop(id)
+        return {
+          todoData: todoData,
+        }
+      }
+      const { newMin, newSec } = this.timeDown(oldItem.min, oldItem.sec)
+      let newData = this.onToggleProperty(todoData, id, 'min', newMin)
+      newData = this.onToggleProperty(newData, id, 'sec', newSec)
+
+      return {
+        todoData: newData,
+      }
+    })
+  }
+
+  onPlay = (id) => {
+    this.setState(({ todoData }) => {
+      if (this.getItem(todoData, id).startTimer) {
+        return null
+      }
+      let newData = this.onToggleProperty(todoData, id, 'startTimer', true)
+      newData = this.onToggleProperty(newData, id, 'intervalId', setInterval(this.timer, 1000, id))
+      return {
+        todoData: newData,
+      }
+    })
+  }
+
+  onStop = (id) => {
+    this.setState(({ todoData }) => {
+      let newData = this.getItem(todoData, id)
+      clearInterval(newData.intervalId)
+      newData = this.onToggleProperty(todoData, id, 'startTimer', false)
+      return {
+        todoData: newData,
       }
     })
   }
@@ -157,6 +251,8 @@ export default class App extends Component {
             onEditing={this.onToggleEditing}
             onCompleted={this.onToggleCompleted}
             onChangeTask={this.onChangeTask}
+            onPlay={(id) => this.onPlay(id)}
+            onStop={(id) => this.onStop(id)}
           />
           <Footer
             filters={footerData}

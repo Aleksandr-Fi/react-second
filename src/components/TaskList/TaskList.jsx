@@ -2,7 +2,7 @@ import propTypes from 'prop-types'
 
 import Task from '../Task/Task'
 
-const TaskList = ({ todos, filters, onDestroy, onEditing, onCompleted, onChangeTask }) => {
+const TaskList = ({ todos, filters, onDestroy, onEditing, onCompleted, onChangeTask, onPlay, onStop }) => {
   TaskList.propTypes = {
     todos: propTypes.array.isRequired,
     filters: propTypes.array.isRequired,
@@ -35,6 +35,8 @@ const TaskList = ({ todos, filters, onDestroy, onEditing, onCompleted, onChangeT
             onEditing={() => onEditing(id)}
             onCompleted={() => onCompleted(id)}
             onChangeForm={(text) => onChangeTask(text, id)}
+            onPlay={() => onPlay(id)}
+            onStop={() => onStop(id)}
           />
         )
       })}

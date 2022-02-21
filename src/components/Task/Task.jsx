@@ -1,4 +1,3 @@
-import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
 import propTypes from 'prop-types'
 import { Component } from 'react'
 
@@ -23,7 +22,7 @@ export default class Task extends Component {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
     text: propTypes.string.isRequired,
-    created: propTypes.instanceOf(Date).isRequired,
+    created: propTypes.string.isRequired,
     onDestroy: propTypes.func.isRequired,
     onEditing: propTypes.func.isRequired,
     onCompleted: propTypes.func.isRequired,
@@ -49,7 +48,7 @@ export default class Task extends Component {
   }
 
   render() {
-    const { text, created, checked, onDestroy, onEditing, onCompleted } = this.props
+    const { text, created, checked, onDestroy, onEditing, onCompleted, min, sec, onPlay, onStop } = this.props
     return (
       <li className={this.getClassName()}>
         <div className="view">
@@ -59,11 +58,11 @@ export default class Task extends Component {
           <label>
             <span className="title">{text}</span>
             <span className="description">
-              <button className="icon icon-play"></button>
-              <button className="icon icon-pause"></button>
-              {' 12:25 '}
+              <button className="icon icon-play" onClick={onPlay}></button>
+              <button className="icon icon-pause" onClick={onStop}></button>
+              {` ${min}:${sec} `}
             </span>
-            <span className="description">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
+            <span className="description">{`created ${created} ago`}</span>
           </label>
           <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
           <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
