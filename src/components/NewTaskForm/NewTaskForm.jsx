@@ -6,16 +6,18 @@ class NewTaskForm extends Component {
     super(props)
     this.state = {
       text: '',
+      min: 11,
+      sec: 6,
     }
-    this.onChangeText = (e) => {
+    this.onChange = (e) => {
       this.setState({
-        text: e.target.value,
+        [e.target.name]: e.target.value,
       })
     }
     this.onSubmit = (e) => {
       e.preventDefault()
       if (this.state.text.trim()) {
-        this.props.addTask(this.state.text)
+        this.props.addTask(this.state.text, this.state.min, this.state.sec)
       }
       this.setState({
         text: '',
@@ -32,18 +34,20 @@ class NewTaskForm extends Component {
         <label className="input-label label-new-todo">
           <input
             className="new-todo"
+            tabIndex={0}
+            name="text"
             placeholder="Task"
             autoFocus
-            onChange={this.onChangeText}
+            onChange={this.onChange}
             value={this.state.text}
           />
         </label>
-        <label className="input-label label-new-todo-form__timer">
+        {/* <label className="input-label label-new-todo-form__timer">
           <input className="new-todo-form__timer" placeholder="Min" autoFocus />
-        </label>
-        <label className="input-label label-new-todo-form__timer">
+        </label> */}
+        {/* <label className="input-label label-new-todo-form__timer">
           <input className="new-todo-form__timer" placeholder="Sec" autoFocus />
-        </label>
+        </label> */}
       </form>
     )
   }
