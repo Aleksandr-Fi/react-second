@@ -19,8 +19,8 @@ export default class App extends Component {
           createdData: new Date(),
           created: '0 second',
           checked: true,
-          min: 0,
-          sec: 5,
+          min: 12,
+          sec: 25,
           startTimer: false,
           // intervalId: false,
         },
@@ -103,7 +103,7 @@ export default class App extends Component {
       })
     }
 
-    this.addTask = (text) => {
+    this.addTask = (text, min, sec) => {
       const newTask = {
         text: text,
         completed: false,
@@ -111,8 +111,8 @@ export default class App extends Component {
         createdData: new Date(),
         created: '0 second',
         id: this.maxId++,
-        min: 12,
-        sec: 25,
+        min: min,
+        sec: sec,
         startTimer: false,
         intervalId: false,
       }
@@ -156,7 +156,7 @@ export default class App extends Component {
       id: this.maxId++,
       checked: false,
       min: 12,
-      sec: 4,
+      sec: 25,
       startTimer: false,
       intervalId: false,
     }
