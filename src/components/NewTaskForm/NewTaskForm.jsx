@@ -43,10 +43,10 @@ class NewTaskForm extends Component {
           />
         </label>
         {/* <label className="input-label label-new-todo-form__timer">
-          <input className="new-todo-form__timer" placeholder="Min" autoFocus />
+          <input className="new-todo-form__timer" tabindex="0" name="min" placeholder="Min" autoFocus />
         </label> */}
         {/* <label className="input-label label-new-todo-form__timer">
-          <input className="new-todo-form__timer" placeholder="Sec" autoFocus />
+          <input className="new-todo-form__timer" tabindex="0" name="sec" placeholder="Sec" autoFocus />
         </label> */}
       </form>
     )
