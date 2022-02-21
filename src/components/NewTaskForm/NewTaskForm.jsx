@@ -6,8 +6,8 @@ class NewTaskForm extends Component {
     super(props)
     this.state = {
       text: '',
-      min: 11,
-      sec: 6,
+      min: 12,
+      sec: 25,
     }
     this.onChange = (e) => {
       this.setState({
