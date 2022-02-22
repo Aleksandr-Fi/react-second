@@ -68,7 +68,7 @@ class NewTaskForm extends Component {
             value={this.state.sec}
           />
         </label>
-        <label className="input-label ">
+        <label className="input-label">
           <input className="input-submit-timer" type="submit" hidden />
         </label>
       </form>
