@@ -6,8 +6,8 @@ class NewTaskForm extends Component {
     super(props)
     this.state = {
       text: '',
-      min: 12,
-      sec: 25,
+      min: '',
+      sec: '',
     }
     this.onChange = (e) => {
       this.setState({
@@ -16,11 +16,15 @@ class NewTaskForm extends Component {
     }
     this.onSubmit = (e) => {
       e.preventDefault()
+      const min = this.state.min ? this.state.min : 0
+      const sec = this.state.sec ? this.state.sec : 0
       if (this.state.text.trim()) {
-        this.props.addTask(this.state.text, this.state.min, this.state.sec)
+        this.props.addTask(this.state.text, min, sec)
       }
       this.setState({
         text: '',
+        min: '',
+        sec: '',
       })
     }
   }
@@ -42,12 +46,31 @@ class NewTaskForm extends Component {
             value={this.state.text}
           />
         </label>
-        {/* <label className="input-label label-new-todo-form__timer">
-          <input className="new-todo-form__timer" tabindex="0" name="min" placeholder="Min" autoFocus />
-        </label> */}
-        {/* <label className="input-label label-new-todo-form__timer">
-          <input className="new-todo-form__timer" tabindex="0" name="sec" placeholder="Sec" autoFocus />
-        </label> */}
+        <label className="input-label label-new-todo-form__timer">
+          <input
+            className="new-todo-form__timer"
+            tabIndex={0}
+            name="min"
+            placeholder="Min"
+            autoFocus
+            onChange={this.onChange}
+            value={this.state.min}
+          />
+        </label>
+        <label className="input-label label-new-todo-form__timer">
+          <input
+            className="new-todo-form__timer"
+            tabIndex={0}
+            name="sec"
+            placeholder="Sec"
+            autoFocus
+            onChange={this.onChange}
+            value={this.state.sec}
+          />
+        </label>
+        <label className="input-label ">
+          <input className="input-submit-timer" type="submit" hidden />
+        </label>
       </form>
     )
   }
