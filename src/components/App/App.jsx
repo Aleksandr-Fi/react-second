@@ -162,7 +162,7 @@ const App = () => {
     let newData = todoData
     newData = onToggleProperty(newData, id, 'startTimer', true)
     // newData = onToggleProperty(newData, id, 'intervalId', setInterval(timer, 1000, id))
-    setIntervalTimers(intervalTimers.set(id, setInterval(timer, 2000, id)))
+    setIntervalTimers(intervalTimers.set(id, setInterval(timer, 1000, id)))
     setTodoData(newData)
   }
 
