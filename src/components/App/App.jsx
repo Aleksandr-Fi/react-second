@@ -22,7 +22,7 @@ export default class App extends Component {
           min: 12,
           sec: 25,
           startTimer: false,
-          // intervalId: false,
+          intervalId: false,
         },
         {
           id: 2,
@@ -128,21 +128,23 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.stateRefresh()
+    this.timerID = setInterval(() => this.tick(), 1000)
   }
 
-  stateRefresh = () => {
-    setInterval(() => {
-      this.setState(({ todoData }) => {
-        const newArr = [...todoData]
-        newArr.forEach((item) => {
-          item.created = formatDistanceToNowStrict(item.createdData)
-        })
-        return {
-          todoData: newArr,
-        }
+  componentWillUnmount() {
+    clearInterval(this.timerID)
+  }
+
+  tick = () => {
+    this.setState(({ todoData }) => {
+      const newArr = [...todoData]
+      newArr.forEach((item) => {
+        item.created = formatDistanceToNowStrict(item.createdData)
       })
-    }, 1000)
+      return {
+        todoData: newArr,
+      }
+    })
   }
 
   createTodoTask(text) {
@@ -215,7 +217,8 @@ export default class App extends Component {
 
   onPlay = (id) => {
     this.setState(({ todoData }) => {
-      if (this.getItem(todoData, id).startTimer) {
+      let oldItem = this.getItem(todoData, id)
+      if (oldItem.startTimer || (!oldItem.min && !oldItem.sec)) {
         return null
       }
       let newData = this.onToggleProperty(todoData, id, 'startTimer', true)
