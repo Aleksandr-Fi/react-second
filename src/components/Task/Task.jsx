@@ -1,25 +1,35 @@
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
 import propTypes from 'prop-types'
-import { Component } from 'react'
+import { useState } from 'react'
 
-export default class Task extends Component {
-  state = {
-    text: this.props.text,
+const Task = (props) => {
+  const {
+    text,
+    created,
+    checked,
+    completed,
+    editing,
+    onDestroy,
+    onEditing,
+    onCompleted,
+    onChangeForm,
+    min,
+    sec,
+    onPlay,
+    onStop,
+  } = props
+  const [label, setLabel] = useState(text)
+
+  const onChangeText = (e) => {
+    setLabel(e.target.value)
   }
 
-  onChangeText = (e) => {
-    const newValue = e.target.value
-    this.setState({
-      text: newValue,
-    })
-  }
-
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
-    this.props.onChangeForm(this.state.text)
+    onChangeForm(label)
   }
 
-  static propTypes = {
+  Task.propTypes = {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
     text: propTypes.string.isRequired,
@@ -30,57 +40,55 @@ export default class Task extends Component {
     onChangeForm: propTypes.func.isRequired,
   }
 
-  static defaultProps = {
+  Task.defaultProps = {
     onDestroy: () => {},
     onEditing: () => {},
     onCompleted: () => {},
     onChangeForm: () => {},
   }
 
-  getClassName() {
+  const getClassName = () => {
     let classNames = ''
-    if (this.props.completed) {
+    if (completed) {
       classNames += 'completed'
     }
-    if (this.props.editing) {
+    if (editing) {
       classNames += ' editing'
     }
     return classNames
   }
-
-  render() {
-    const { created, checked, onDestroy, onEditing, onCompleted, min, sec, onPlay, onStop } = this.props
-    return (
-      <li className={this.getClassName()}>
-        <div className="view">
-          <label className="input-label label-toggle">
-            <input className="toggle" type="checkbox" onChange={onCompleted} checked={checked} />
-          </label>
-          <label>
-            <span className="title" onClick={onCompleted}>
-              {this.state.text}
-            </span>
-            <span className="description">
-              <button className="icon icon-play" onClick={onPlay}></button>
-              <button className="icon icon-pause" onClick={onStop}></button>
-              {` ${min}:${sec} `}
-            </span>
-            <span className="description">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
-          </label>
-          <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
-          <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
-        </div>
-        <form onSubmit={this.onSubmit}>
-          <label className="input-label label-edit">
-            <input
-              ref={this.props.editing ? (input) => input && input.focus() : null}
-              type="text"
-              className="edit"
-              onChange={this.onChangeText}
-            />
-          </label>
-        </form>
-      </li>
-    )
-  }
+  return (
+    <li className={getClassName()}>
+      <div className="view">
+        <label className="input-label label-toggle">
+          <input className="toggle" type="checkbox" onChange={onCompleted} checked={checked} />
+        </label>
+        <label>
+          <span className="title" onClick={onCompleted}>
+            {label}
+          </span>
+          <span className="description">
+            <button className="icon icon-play" onClick={onPlay}></button>
+            <button className="icon icon-pause" onClick={onStop}></button>
+            {` ${min}:${sec} `}
+          </span>
+          <span className="description">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
+        </label>
+        <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
+        <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
+      </div>
+      <form onSubmit={onSubmit}>
+        <label className="input-label label-edit">
+          <input
+            ref={editing ? (input) => input && input.focus() : null}
+            type="text"
+            className="edit"
+            onChange={onChangeText}
+          />
+        </label>
+      </form>
+    </li>
+  )
 }
+
+export default Task
