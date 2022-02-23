@@ -267,6 +267,10 @@ label {
   text-decoration: line-through;
 }
 
+.title {
+  cursor: pointer;
+}
+
 .todo-list li .icon {
   width: 30px;
   height: 40px;
