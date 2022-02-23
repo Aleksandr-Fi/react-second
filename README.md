@@ -1,3 +1,3 @@
 # link to the deployed application
 
-https://react-second-9say0kztu-aleksandr-fi.vercel.app/
+https://react-second-dxlo6e5rv-aleksandr-fi.vercel.app/
