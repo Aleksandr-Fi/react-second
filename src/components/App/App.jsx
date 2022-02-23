@@ -16,8 +16,7 @@ export default class App extends Component {
           completed: true,
           editing: false,
           text: 'fw',
-          createdData: new Date(),
-          created: '0 second',
+          created: new Date(),
           checked: true,
           min: 12,
           sec: 25,
@@ -29,8 +28,7 @@ export default class App extends Component {
           completed: false,
           editing: true,
           text: 'Editing task',
-          createdData: new Date(),
-          created: '0 second',
+          created: new Date(),
           checked: false,
           min: 12,
           sec: 25,
@@ -108,8 +106,7 @@ export default class App extends Component {
         text: text,
         completed: false,
         editing: false,
-        createdData: new Date(),
-        created: '0 second',
+        created: new Date(),
         id: this.maxId++,
         min: min,
         sec: sec,
@@ -125,14 +122,6 @@ export default class App extends Component {
         }
       })
     }
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID)
   }
 
   tick = () => {
@@ -152,8 +141,7 @@ export default class App extends Component {
       text: text,
       completed: false,
       editing: false,
-      createdData: new Date(),
-      created: '0 second',
+      created: new Date(),
       field: { value: text },
       id: this.maxId++,
       checked: false,

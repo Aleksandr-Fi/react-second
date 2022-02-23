@@ -1,3 +1,4 @@
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
 import propTypes from 'prop-types'
 import { Component } from 'react'
 
@@ -22,7 +23,7 @@ export default class Task extends Component {
     completed: propTypes.bool.isRequired,
     editing: propTypes.bool.isRequired,
     text: propTypes.string.isRequired,
-    created: propTypes.string.isRequired,
+    created: propTypes.instanceOf(Date).isRequired,
     onDestroy: propTypes.func.isRequired,
     onEditing: propTypes.func.isRequired,
     onCompleted: propTypes.func.isRequired,
@@ -62,7 +63,7 @@ export default class Task extends Component {
               <button className="icon icon-pause" onClick={onStop}></button>
               {` ${min}:${sec} `}
             </span>
-            <span className="description">{`created ${created} ago`}</span>
+            <span className="description">{`created ${formatDistanceToNowStrict(created)} ago`}</span>
           </label>
           <button className="icon icon-edit" title="edit" onClick={onEditing}></button>
           <button className="icon icon-destroy" title="destroy" onClick={onDestroy}></button>
