@@ -2,31 +2,31 @@ import { Component } from 'react'
 import propTypes from 'prop-types'
 
 class NewTaskForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+  static propTypes = {
+    addTask: propTypes.func.isRequired,
+  }
+
+  state = {
+    text: '',
+    min: '',
+    sec: '',
+  }
+
+  onChange = (e) => {
+    const stateUpdate = { [e.target.name]: e.target.value }
+    this.setState(stateUpdate)
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault()
+    if (this.state.text.trim() && this.state.min && this.state.sec) {
+      this.props.addTask(this.state.text, this.state.min, this.state.sec)
+    }
+    this.setState({
       text: '',
       min: '',
       sec: '',
-    }
-    this.onChange = (e) => {
-      const stateUpdate = { [e.target.name]: e.target.value }
-      this.setState(stateUpdate)
-    }
-    this.onSubmit = (e) => {
-      e.preventDefault()
-      if (this.state.text.trim() && this.state.min && this.state.sec) {
-        this.props.addTask(this.state.text, this.state.min, this.state.sec)
-      }
-      this.setState({
-        text: '',
-        min: '',
-        sec: '',
-      })
-    }
-  }
-  static propTypes = {
-    addTask: propTypes.func.isRequired,
+    })
   }
 
   render() {

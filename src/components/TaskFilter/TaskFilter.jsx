@@ -7,13 +7,13 @@ const TaskFilter = ({ text, selected, onToggleFilter }) => {
     onToggleFilter: propTypes.func.isRequired,
   }
 
+  TaskFilter.defaultProps = {
+    onToggleFilter: () => {},
+  }
+
   let classNames = ''
   if (selected) {
     classNames += 'selected'
-  }
-
-  TaskFilter.defaultProps = {
-    onToggleFilter: () => {},
   }
 
   return (

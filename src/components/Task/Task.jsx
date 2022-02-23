@@ -3,21 +3,20 @@ import propTypes from 'prop-types'
 import { Component } from 'react'
 
 export default class Task extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      text: this.props.text,
-    }
-    this.onChangeText = (e) => {
-      const newValue = e.target.value
-      this.setState({
-        text: newValue,
-      })
-    }
-    this.onSubmit = (e) => {
-      e.preventDefault()
-      this.props.onChangeForm(this.state.text)
-    }
+  state = {
+    text: this.props.text,
+  }
+
+  onChangeText = (e) => {
+    const newValue = e.target.value
+    this.setState({
+      text: newValue,
+    })
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault()
+    this.props.onChangeForm(this.state.text)
   }
 
   static propTypes = {
@@ -77,7 +76,6 @@ export default class Task extends Component {
               ref={this.props.editing ? (input) => input && input.focus() : null}
               type="text"
               className="edit"
-              // defaultValue={text}
               onChange={this.onChangeText}
             />
           </label>
