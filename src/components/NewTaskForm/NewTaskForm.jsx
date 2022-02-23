@@ -10,9 +10,8 @@ class NewTaskForm extends Component {
       sec: '',
     }
     this.onChange = (e) => {
-      this.setState({
-        [e.target.name]: e.target.value,
-      })
+      const stateUpdate = { [e.target.name]: e.target.value }
+      this.setState(stateUpdate)
     }
     this.onSubmit = (e) => {
       e.preventDefault()

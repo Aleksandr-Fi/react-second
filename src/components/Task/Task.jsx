@@ -9,8 +9,9 @@ export default class Task extends Component {
       text: this.props.text,
     }
     this.onChangeText = (e) => {
+      const newValue = e.target.value
       this.setState({
-        text: e.target.value,
+        text: newValue,
       })
     }
     this.onSubmit = (e) => {
@@ -49,7 +50,7 @@ export default class Task extends Component {
   }
 
   render() {
-    const { text, created, checked, onDestroy, onEditing, onCompleted, min, sec, onPlay, onStop } = this.props
+    const { created, checked, onDestroy, onEditing, onCompleted, min, sec, onPlay, onStop } = this.props
     return (
       <li className={this.getClassName()}>
         <div className="view">
@@ -58,7 +59,7 @@ export default class Task extends Component {
           </label>
           <label>
             <span className="title" onClick={onCompleted}>
-              {text}
+              {this.state.text}
             </span>
             <span className="description">
               <button className="icon icon-play" onClick={onPlay}></button>

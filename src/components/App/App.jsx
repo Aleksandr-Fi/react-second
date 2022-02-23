@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import { formatDistanceToNowStrict } from 'date-fns'
 
 import AppHeader from '../AppHeader/AppHeader'
 import TaskList from '../TaskList/TaskList'
@@ -45,60 +44,39 @@ export default class App extends Component {
       ],
     }
     this.onToggleCompleted = (id) => {
-      this.setState(({ todoData }) => {
-        let newData = this.onToggleProperty(todoData, id, 'completed')
-        newData = this.onToggleProperty(newData, id, 'checked')
-        return {
-          todoData: newData,
-        }
-      })
+      let newData = this.onToggleProperty(this.state.todoData, id, 'completed')
+      newData = this.onToggleProperty(newData, id, 'checked')
+      this.setState({ todoData: newData })
     }
 
     this.onToggleEditing = (id) => {
-      this.setState(({ todoData }) => {
-        return {
-          todoData: this.onToggleProperty(todoData, id, 'editing'),
-        }
-      })
+      let newData = this.onToggleProperty(this.state.todoData, id, 'editing')
+      this.setState({ todoData: newData })
     }
 
     this.onChangeTask = (text, id) => {
-      this.setState(({ todoData }) => {
-        return {
-          todoData: this.onToggleProperty(todoData, id, 'text', text),
-        }
-      })
+      // change the content of the task
+      let newData = this.onToggleProperty(this.state.todoData, id, 'text', text)
+      this.setState({ todoData: newData })
+      // cancel editing
       this.onToggleEditing(id)
     }
 
     this.onToggleFilter = (id) => {
-      this.setState(({ footerData }) => {
-        return {
-          footerData: this.changeActiveElement(footerData, id, 'selected'),
-        }
-      })
+      let newData = this.changeActiveElement(this.state.footerData, id, 'selected')
+      this.setState({ footerData: newData })
     }
 
     this.destroyTask = (id) => {
-      this.setState(({ todoData }) => {
-        const idx = todoData.findIndex((el) => el.id === id)
-
-        const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)]
-
-        return {
-          todoData: newArray,
-        }
-      })
+      let newData = this.state.todoData
+      const idx = newData.findIndex((el) => el.id === id)
+      newData = [...newData.slice(0, idx), ...newData.slice(idx + 1)]
+      this.setState({ todoData: newData })
     }
 
     this.onClearCompleted = () => {
-      this.setState(({ todoData }) => {
-        const newArray = todoData.filter((el) => !el.completed)
-
-        return {
-          todoData: newArray,
-        }
-      })
+      const newData = this.state.todoData.filter((el) => !el.completed)
+      this.setState({ todoData: newData })
     }
 
     this.addTask = (text, min, sec) => {
@@ -107,34 +85,17 @@ export default class App extends Component {
         completed: false,
         editing: false,
         created: new Date(),
-        checked: true,
+        checked: false,
         id: this.maxId++,
         min: min,
         sec: sec,
         startTimer: false,
         intervalId: false,
       }
-
-      this.setState(({ todoData }) => {
-        const newArr = [...todoData, newTask]
-
-        return {
-          todoData: newArr,
-        }
-      })
+      let newData = this.state.todoData
+      newData = [...newData, newTask]
+      this.setState({ todoData: newData })
     }
-  }
-
-  tick = () => {
-    this.setState(({ todoData }) => {
-      const newArr = [...todoData]
-      newArr.forEach((item) => {
-        item.created = formatDistanceToNowStrict(item.createdData)
-      })
-      return {
-        todoData: newArr,
-      }
-    })
   }
 
   createTodoTask(text) {
@@ -143,7 +104,7 @@ export default class App extends Component {
       completed: false,
       editing: false,
       created: new Date(),
-      checked: true,
+      checked: false,
       field: { value: text },
       id: this.maxId++,
       min: 12,
@@ -186,47 +147,32 @@ export default class App extends Component {
   }
 
   timer = (id) => {
-    this.setState(({ todoData }) => {
-      let oldItem = this.getItem(todoData, id)
-      if (!oldItem.min && !oldItem.sec) {
-        this.onStop(id)
-        return {
-          todoData: todoData,
-        }
-      }
-      const { newMin, newSec } = this.timeDown(oldItem.min, oldItem.sec)
-      let newData = this.onToggleProperty(todoData, id, 'min', newMin)
-      newData = this.onToggleProperty(newData, id, 'sec', newSec)
-
-      return {
-        todoData: newData,
-      }
-    })
+    let oldItem = this.getItem(this.state.todoData, id)
+    if (!oldItem.min && !oldItem.sec) {
+      this.onStop(id)
+      return
+    }
+    const { newMin, newSec } = this.timeDown(oldItem.min, oldItem.sec)
+    let newData = this.onToggleProperty(this.state.todoData, id, 'min', newMin)
+    newData = this.onToggleProperty(newData, id, 'sec', newSec)
+    this.setState({ todoData: newData })
   }
 
   onPlay = (id) => {
-    this.setState(({ todoData }) => {
-      let oldItem = this.getItem(todoData, id)
-      if (oldItem.startTimer || (!oldItem.min && !oldItem.sec)) {
-        return null
-      }
-      let newData = this.onToggleProperty(todoData, id, 'startTimer', true)
-      newData = this.onToggleProperty(newData, id, 'intervalId', setInterval(this.timer, 1000, id))
-      return {
-        todoData: newData,
-      }
-    })
+    let oldItem = this.getItem(this.state.todoData, id)
+    if (oldItem.startTimer || (!oldItem.min && !oldItem.sec)) {
+      return
+    }
+    let newData = this.onToggleProperty(this.state.todoData, id, 'startTimer', true)
+    newData = this.onToggleProperty(newData, id, 'intervalId', setInterval(this.timer, 1000, id))
+    this.setState({ todoData: newData })
   }
 
   onStop = (id) => {
-    this.setState(({ todoData }) => {
-      let newData = this.getItem(todoData, id)
-      clearInterval(newData.intervalId)
-      newData = this.onToggleProperty(todoData, id, 'startTimer', false)
-      return {
-        todoData: newData,
-      }
-    })
+    let newItem = this.getItem(this.state.todoData, id)
+    clearInterval(newItem.intervalId)
+    let newData = this.onToggleProperty(this.state.todoData, id, 'startTimer', false)
+    this.setState({ todoData: newData })
   }
 
   render() {

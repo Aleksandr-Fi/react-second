@@ -17,20 +17,20 @@ const Footer = ({ filters, todos, onToggleFilter, onClearCompleted }) => {
     onClearCompleted: () => {},
   }
 
-  const elements = filters.map((item) => {
-    const { id, ...itemProps } = item
-
-    return (
-      <li key={id}>
-        <TaskFilter {...itemProps} onToggleFilter={() => onToggleFilter(id)} />
-      </li>
-    )
-  })
-
   return (
     <footer className="footer">
       <span className="todo-count">{leftText}</span>
-      <ul className="filters">{elements}</ul>
+      <ul className="filters">
+        {filters.map((item) => {
+          const { id, ...itemProps } = item
+
+          return (
+            <li key={id}>
+              <TaskFilter {...itemProps} onToggleFilter={() => onToggleFilter(id)} />
+            </li>
+          )
+        })}
+      </ul>
       <button className="clear-completed" title="clear-completed" onClick={onClearCompleted}>
         Clear completed
       </button>
