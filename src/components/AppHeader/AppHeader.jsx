@@ -1,21 +1,19 @@
-import { Component } from 'react'
+// import { Component } from 'react'
 import propTypes from 'prop-types'
 
 import NewTaskForm from '../NewTaskForm'
 
-class AppHeader extends Component {
-  static propTypes = {
+const AppHeader = ({ addTask }) => {
+  AppHeader.propTypes = {
     addTask: propTypes.func.isRequired,
   }
 
-  render() {
-    return (
-      <header className="header">
-        <h1 className="heading">todos</h1>
-        <NewTaskForm addTask={this.props.addTask} />
-      </header>
-    )
-  }
+  return (
+    <header className="header">
+      <h1 className="heading">todos</h1>
+      <NewTaskForm addTask={addTask} />
+    </header>
+  )
 }
 
 export default AppHeader
