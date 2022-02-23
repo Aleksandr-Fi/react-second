@@ -16,10 +16,8 @@ class NewTaskForm extends Component {
     }
     this.onSubmit = (e) => {
       e.preventDefault()
-      const min = this.state.min ? this.state.min : 0
-      const sec = this.state.sec ? this.state.sec : 0
-      if (this.state.text.trim()) {
-        this.props.addTask(this.state.text, min, sec)
+      if (this.state.text.trim() && this.state.min && this.state.sec) {
+        this.props.addTask(this.state.text, this.state.min, this.state.sec)
       }
       this.setState({
         text: '',
