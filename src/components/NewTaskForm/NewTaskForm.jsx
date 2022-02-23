@@ -36,6 +36,7 @@ class NewTaskForm extends Component {
           <input
             className="new-todo"
             tabIndex={0}
+            type="text"
             name="text"
             placeholder="Task"
             autoFocus
@@ -47,6 +48,7 @@ class NewTaskForm extends Component {
           <input
             className="new-todo-form__timer"
             tabIndex={0}
+            type="number"
             name="min"
             placeholder="Min"
             autoFocus
@@ -58,6 +60,7 @@ class NewTaskForm extends Component {
           <input
             className="new-todo-form__timer"
             tabIndex={0}
+            type="number"
             name="sec"
             placeholder="Sec"
             autoFocus
