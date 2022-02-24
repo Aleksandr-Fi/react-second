@@ -150,9 +150,10 @@ const App = () => {
     const { newMin, newSec } = timeDown(oldItem.min, oldItem.sec)
     oldItem.min = newMin
     oldItem.sec = newSec
-    let newData = onToggleProperty(todoData, id, 'min', newMin)
-    newData = onToggleProperty(newData, id, 'sec', newSec)
-    setTodoData(newData)
+    setTodoData((todoData) => {
+      let newData = onToggleProperty(todoData, id, 'min', newMin)
+      return onToggleProperty(newData, id, 'sec', newSec)
+    })
   }
 
   const onPlay = (id) => {
