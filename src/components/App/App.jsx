@@ -161,16 +161,12 @@ const App = () => {
     if (oldItem.startTimer || (!oldItem.min && !oldItem.sec)) {
       return
     }
-    let newData = todoData
-    newData = onToggleProperty(newData, id, 'startTimer', true)
-    // newData = onToggleProperty(newData, id, 'intervalId', setInterval(timer, 1000, id))
+    let newData = onToggleProperty(todoData, id, 'startTimer', true)
     setIntervalTimers(intervalTimers.set(id, setInterval(timer, 1000, id)))
     setTodoData(newData)
   }
 
   const onStop = (id) => {
-    // let newItem = getItem(todoData, id)
-    // clearInterval(newItem.intervalId)
     clearInterval(intervalTimers.get(id))
     let newData = onToggleProperty(todoData, id, 'startTimer', false)
     setTodoData(newData)
