@@ -11,7 +11,7 @@ const NewTaskForm = ({ addTask }) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    if (text.trim() && min && sec) {
+    if (text.trim() && min && min.length <= 4 && sec && sec <= 59) {
       addTask(text, min, sec)
     }
     setText('')
